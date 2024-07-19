@@ -1,0 +1,38 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Evita las barras de desplazamiento */
+}
+
+.button-container {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: start; /* Centra los botones horizontalmente */
+  width: 100%; /* Asegura que los botones ocupen el mismo ancho que la tarjeta */
+  gap: 10px; /* Añade espacio entre los botones */
+}
+
+.contratos-container {
+  display: flex;
+  position: fixed; /* Cambiado a fixed para asegurar posición respecto a la ventana */
+  top: 50px; /* Ajusta este valor según la altura de tu cabezal */
+  left: 300px; /* Ajusta este valor según el ancho de tu barra lateral */
+  height: calc(100% - 50px); /* Altura total menos la altura del cabezal */
+  width: calc(100% - 200px); /* Ancho total menos el ancho de la barra lateral */
+  padding: 10px; /* Añade margen interno */
+  box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor */
+  overflow: hidden; /* Evita scrollbars internos */
+}
+
+.contratos-list {
+  width: 50%; /* Ajusta este valor según sea necesario */
+  padding: 10px;
+  box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor */
+}
+
+.contratos-detail {
+  width: 50%; /* Ajusta este valor según sea necesario */
+  padding: 10px;
+  box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor */
+}

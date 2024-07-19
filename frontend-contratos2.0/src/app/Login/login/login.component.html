@@ -1,0 +1,28 @@
+<div class="main-container">
+  <div class="login-container">
+    <div class="h1">
+      <h2> Welcome</h2>
+    </div>
+    <form [formGroup]="loginForm">
+      <div class="float-label">
+        <p-floatLabel>
+          <input id="email" formControlName="email" type="text" pInputText/>
+          <label for="email">Email</label>
+        </p-floatLabel>
+      </div>
+      <div class="float-label">
+        <p-floatLabel>
+          <input id="password" formControlName="password" type="text" pInputText/>
+          <label for="password">Password</label>
+        </p-floatLabel>
+      </div>
+      <div class="no-account">
+        <a pButton routerLink="/register" label="Don't have an account?" class="p-button-text"></a>
+      </div>
+
+      <div class="button-container">
+        <p-button (click)="onLogin()" [disabled]="loginForm.invalid" severity="primary"> Login</p-button>
+      </div>
+    </form>
+  </div>
+</div>

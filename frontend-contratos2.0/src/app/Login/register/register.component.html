@@ -1,0 +1,29 @@
+<div class="main-container">
+  <div class="login-container">
+    <div class="h1">
+      <h2 > Create Account</h2>
+    </div>
+    <form [formGroup]="registerForm">
+      <div class="float-label">
+        <p-floatLabel>
+          <input id="email" formControlName="email" type="text" pInputText/>
+          <label for="email">Email</label>
+        </p-floatLabel>
+      </div>
+      <div class="float-label">
+
+        <p-floatLabel>
+          <input id="password" formControlName="password" type="text" pInputText/>
+          <label for="password">Password</label>
+        </p-floatLabel>
+      </div>
+      <div class="account">
+        <a pButton routerLink="/login" label="Already registered?" class="p-button-text"></a>
+      </div>
+
+      <div class="button-container">
+        <p-button (click)="onRegister()" [disabled]="registerForm.invalid" severity="primary"> Register</p-button>
+      </div>
+    </form>
+  </div>
+</div>
