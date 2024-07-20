@@ -21,12 +21,12 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public boolean login(@RequestBody UserDto loginUser) {
+    public UserEntity login(@RequestBody UserDto loginUser) {
         UserEntity user = userService.findByEmail(loginUser.getEmail());
-        if (user == null) {
-            return false;
+        if (user != null && user.getPassword().equals(loginUser.getPassword())) {
+            return user;
         } else {
-            return user.getPassword().equals(loginUser.getPassword());
+            return null;
         }
 
     }

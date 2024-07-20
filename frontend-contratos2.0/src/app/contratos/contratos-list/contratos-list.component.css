@@ -15,18 +15,19 @@ body, html {
 
 .contratos-container {
   display: flex;
-  position: fixed; /* Cambiado a fixed para asegurar posición respecto a la ventana */
+  position: relative; /* Cambiado a fixed para asegurar posición respecto a la ventana */
   top: 50px; /* Ajusta este valor según la altura de tu cabezal */
-  left: 300px; /* Ajusta este valor según el ancho de tu barra lateral */
-  height: calc(100% - 50px); /* Altura total menos la altura del cabezal */
-  width: calc(100% - 200px); /* Ancho total menos el ancho de la barra lateral */
+  left: 287px; /* Ajusta este valor según el ancho de tu barra lateral */
+  height: calc(100% - 300px); /* Altura total menos la altura del cabezal */
+  width: calc(100% - 300px); /* Ancho total menos el ancho de la barra lateral */
   padding: 10px; /* Añade margen interno */
   box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor */
   overflow: hidden; /* Evita scrollbars internos */
+  margin-bottom: 11vh
 }
 
 .contratos-list {
-  width: 50%; /* Ajusta este valor según sea necesario */
+  width: 60%; /* Ajusta este valor según sea necesario */
   padding: 10px;
   box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor */
 }
@@ -35,4 +36,5 @@ body, html {
   width: 50%; /* Ajusta este valor según sea necesario */
   padding: 10px;
   box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor */
+
 }

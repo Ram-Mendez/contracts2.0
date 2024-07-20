@@ -12,14 +12,15 @@
   right: 0;
   z-index: 1000;
   border-radius: 0;
-  color: black
+  color: black;
 }
 
 .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-icon {
   color: black
 }
+
 .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-text {
-color: black
+  color: black
 }
 
 .p-datatable {
@@ -64,7 +65,12 @@ color: black
   border: none;
 }
 
-.p-datatable .p-datatable-tbody > tr > td {
-  background-color: #efefef;
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+  background-color: #efefef !important;
+  color: black !important;
+
+}
+
+.p-datatable .p-datatable-tbody > tr.p-highlight {
 }
 

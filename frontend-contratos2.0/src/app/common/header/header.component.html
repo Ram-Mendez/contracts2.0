@@ -1,3 +1,11 @@
 <div class="card">
-  <p-menubar [model]="items" />
+  <p-menubar [model]="items">
+    <ng-template pTemplate="end">
+      <strong>{{ getUserEmail() }}</strong>
+      <button pButton (click)="logout()" label="Logout" icon="pi pi-sign-out" class="logout-button"></button>
+    </ng-template>
+  </p-menubar>
 </div>
+
+
+

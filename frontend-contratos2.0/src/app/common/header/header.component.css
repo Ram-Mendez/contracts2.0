@@ -1,0 +1,14 @@
+.logout-button {
+  margin-left: 10px;
+  margin-top: 0.7rem
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p-menubar {
+  flex-grow: 1;
+}

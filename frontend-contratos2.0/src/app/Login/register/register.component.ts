@@ -37,18 +37,18 @@ export class RegisterComponent implements OnInit {
 
   onRegister() {
     if (this.registerForm.valid) {
-      this.loginService.createUser(this.registerForm.value as User).subscribe(() => {
-      });
       this.messageService.add({
         severity: 'info',
-        detail: 'User created',
+        summary: 'User created',
         icon: 'pi pi-check'
+      });
+      this.loginService.createUser(this.registerForm.value as User).subscribe(() => {
       });
       this.router.navigate(['/login']);
     } else {
       this.messageService.add({
         severity: 'error',
-        detail: 'Invalid input',
+        summary: 'Invalid input',
         icon: 'pi-exclamation-triangle'
       });
     }

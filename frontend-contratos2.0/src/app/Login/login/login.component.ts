@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FloatLabelModule} from "primeng/floatlabel";
 import {Button, ButtonDirective} from "primeng/button";
 import {ChipsModule} from "primeng/chips";
-import {FormBuilder, ReactiveFormsModule, UntypedFormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {MessageService} from "primeng/api";
 import {LoginService} from "../service/login.service";
@@ -37,26 +37,24 @@ export class LoginComponent implements OnInit {
     password: ['1111', [Validators.required, Validators.minLength(4)]]
   });
 
-  onLogin() {
-    const email = this.loginForm.value.email as string;
-
-    this.loginService.login(this.loginForm.value as User).subscribe(data => {
-      if (data) {
-        this.loginService.setEmail(email);
-        console.log(`User ${email} logged in`)
-        this.messageService.add({
-          severity: 'info',
-          summary: 'Login successful',
-          icon: 'pi pi-check'
-        });
-        this.router.navigate(['/home']);
-      } else {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Check email or password',
-          icon: 'pi-exclamation-triangle'
-        });
-      }
-    })
+  onLogin(): void {
+    if (this.loginForm.valid) {
+      this.loginService.login(this.loginForm.value as User).subscribe(data => {
+        if (data) {
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Login successful',
+            icon: 'pi pi-check',
+          });
+          this.router.navigate(['/home']);
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Check email or password',
+            icon: 'pi pi-exclamation-triangle',
+          });
+        }
+      });
+    }
   }
 }

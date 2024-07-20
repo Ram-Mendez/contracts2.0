@@ -7,7 +7,7 @@ import {TreeNode} from "primeng/api";
 import {TableModule} from "primeng/table";
 import {DatePipe} from "@angular/common";
 import {SidebarComponent} from "../../common/sidebar/sidebar.component";
-import {RouterOutlet} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-contratos-list',
@@ -25,9 +25,11 @@ import {RouterOutlet} from "@angular/router";
 })
 export class ContratosListComponent implements OnInit {
   contratos: Contratos[] = [];
+  isContractSelected: boolean = false;
+  id: number = 0;
 
 
-  constructor(private contratoService: ContratosService) {
+  constructor(private contratoService: ContratosService, private router: Router) {
   }
 
   ngOnInit() {
@@ -37,13 +39,16 @@ export class ContratosListComponent implements OnInit {
   getContratos() {
     this.contratoService.getContratos().subscribe(
       contratos => {
-        console.log(contratos)
         this.contratos = contratos;
       }
     )
   }
 
   editContract() {
+    if (!this.isContractSelected) {
+      return;
+    }
+    this.router.navigate(['/home/contracts-edit/', this.id]);
 
   }
 
@@ -54,4 +59,15 @@ export class ContratosListComponent implements OnInit {
   deleteContract() {
 
   }
+
+  onRowSelect(event: any) {
+    this.isContractSelected = true;
+    this.id = event.data.id;
+    console.log("id", this.id)
+  }
+
+  onRowUnselect(event: any) {
+    this.isContractSelected = false;
+  }
+
 }

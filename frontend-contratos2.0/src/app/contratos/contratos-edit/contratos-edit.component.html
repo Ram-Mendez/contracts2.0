@@ -1,1 +1,32 @@
-<p>contratos-edit works!</p>
+<div class="contratos-container">
+  <div class="contratos-list">
+    <div class="button-container">
+      <strong>Edit Contract:</strong>
+      <form class="edit-form">
+        <div class="card">
+          <p-floatLabel>
+            <input id="name" type="text" pInputText/>
+            <label for="name">Contract Name</label>
+          </p-floatLabel>
+        </div>
+        <div class="card">
+          <p-floatLabel>
+            <select id="authority" pInputText>
+              <option value="authority" disabled selected hidden></option>
+            </select>
+            <label for="authority">Authority</label>
+          </p-floatLabel>
+        </div>
+        <div class="card">
+          <p-floatLabel>
+            <input id="username" type="text" pInputText/>
+            <label for="username">Contractor</label>
+          </p-floatLabel>
+        </div>
+        <div class="center-button">
+          <p-button severity="primary"> Save Changes</p-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

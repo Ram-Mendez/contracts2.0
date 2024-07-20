@@ -9,8 +9,7 @@ import {Observable, tap} from "rxjs";
 export class LoginService {
   urlLogin = 'http://localhost:8080/login';
   urlRegister = 'http://localhost:8080/users';
-
-  userEmail: string = '';
+  userEmail = '';
 
   constructor(private http: HttpClient) {
   }
@@ -22,13 +21,18 @@ export class LoginService {
   login(user: User): Observable<User> {
     return this.http.post<User>(this.urlLogin, user).pipe(
       tap(user => {
-        this.setEmail(user.email);
-        console.log(`User ${user.email} logged in`)
+        this.setUserEmail(user.email)
       })
     );
   }
 
-  setEmail(email: string): void {
+  setUserEmail(email: string) {
     this.userEmail = email;
+    sessionStorage.setItem('userEmail', email);
   }
+
+  getUserEmail() {
+    return this.userEmail;
+  }
+
 }

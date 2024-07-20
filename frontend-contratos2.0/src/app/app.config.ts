@@ -10,6 +10,7 @@ import {TableModule} from "primeng/table";
 import {TreeModule} from "primeng/tree";
 import {MessageModule} from "primeng/message";
 import {MessagesModule} from "primeng/messages";
+import {FloatLabelModule} from "primeng/floatlabel";
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({eventCoalescing: true}),
@@ -22,7 +23,9 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     MenubarModule,
     TableModule,
-    TreeModule
+    TreeModule,
+    FloatLabelModule,
+
 
   ]
 };

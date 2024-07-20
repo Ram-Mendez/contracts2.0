@@ -1,0 +1,49 @@
+.edit-form {
+  margin: 0 auto;
+  width: 110%;
+  margin-top: 17.5px;
+  border: 1px solid #ccc;
+  background: white;
+  margin-left: 1px;
+  height: 30vh;
+}
+
+.card {
+  margin-left: 2rem; /* Ajusta este valor según sea necesario */
+  margin-top: 22px; /* Ajusta este valor según sea necesario */
+}
+
+.field-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-left: 1rem; /* Ajusta este valor según sea necesario */
+  color: black; /* Ajusta este valor según sea necesario */
+}
+
+.p-floatLabel {
+  display: block;
+  margin-bottom: 20px; /* Ajusta este valor según sea necesario */
+}
+
+.p-floatLabel input {
+  width: 100%; /* Asegúrate de que el input ocupe todo el espacio disponible */
+}
+
+.p-inputtext {
+  width: 89%
+}
+
+.button-container {
+  margin-top: 8px;
+  align-items: center;
+  justify-content: center
+}
+
+.center-button {
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente (opcional) */
+  margin-top: 1.5rem;
+  width: 100%;
+}
