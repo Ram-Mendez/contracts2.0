@@ -1,55 +1,13 @@
-.header {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: white;
-  z-index: 1000;
+/* Asegúrate de que el elemento padre de .contact-container (como <body>) tenga al menos height: 100%; */
+html, body {
+  height: 100%;
+  margin: 0;
 }
-
-.contact-container {
-  display: flex;
-  flex-direction: column; /* Adjust to stack children vertically */
-  align-items: center; /* Keep centered alignment */
-  justify-content: start; /* Align content to start to accommodate the paragraph */
-  margin-left: auto; /* Center the container horizontally */
-  margin-right: auto;
-  height: auto; /* Adjust height to fit content */
-  width: 60vh; /* Adjust width as needed */
-  margin-top: 70px; /* Adjust top margin to avoid overlap with header */
-  padding: 20px; /* Add padding for spacing around content */
-  background-color: #efefef;
-  border-radius: 10px;
-}
-
-/* Ensure the paragraph inside .contact-container is styled appropriately */
-.contact-container > p {
-  margin-top: 0;
-  margin-bottom: 20px; /* Add space between paragraph and form */
-}
-
-.margin {
-  margin-bottom: 2rem;
+.col-md-6 {
+  margin-top: 75px
 }
 .button-container {
   display: flex;
   justify-content: center;
-  width: 100%;
-}
-
-.p-field {
-  margin-bottom: 25px;
-}
-
-.p-float-label {
-  display: block;
-}
-
-.p-float-label input,
-.p-float-label textarea {
-  width: 50vh;
-}
-
-.p-float-label label {
-  font-size: 14px;
+  margin-top:10px
 }

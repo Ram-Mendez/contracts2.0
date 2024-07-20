@@ -1,14 +1,20 @@
-<div class="container">
-  <div class="header">
-    <app-header></app-header>
+<div class="container-fluid" style="margin-top: 56px;">
+  <div class="row">
+    <div class="col-12 header">
+      <app-header></app-header>
+    </div>
   </div>
-  <div class="sidebar">
-    <app-sidebar></app-sidebar>
+  <div class="row">
+<!--    <div class="col-3 sidebar">-->
+<!--      <app-sidebar></app-sidebar>-->
+<!--    </div>-->
+    <div class="col-12 body">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <div class="body">
-    <router-outlet></router-outlet>
-  </div>
-  <div class="footer">
-    <app-footer></app-footer>
+  <div class="row">
+    <div class="col-12 footer">
+      <app-footer></app-footer>
+    </div>
   </div>
 </div>

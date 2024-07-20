@@ -2,11 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ContactUsService} from "./service/contact-us.service";
 import {HeaderComponent} from "../../header.component";
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ChipsModule} from "primeng/chips";
-import {InputTextareaModule} from "primeng/inputtextarea";
-import {Button, ButtonDirective} from "primeng/button";
 import {ContactUs} from "./service/contact-us";
 import {FooterComponent} from "../../../footer/footer.component";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-contact-us',
@@ -14,12 +12,9 @@ import {FooterComponent} from "../../../footer/footer.component";
   imports: [
     HeaderComponent,
     FormsModule,
-    ChipsModule,
-    InputTextareaModule,
-    ButtonDirective,
     ReactiveFormsModule,
-    Button,
-    FooterComponent
+    FooterComponent,
+    NgIf
   ],
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.css'

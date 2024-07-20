@@ -1,32 +1,27 @@
 import {Component, OnInit} from '@angular/core';
 import {ContratosService} from "../service/contratos.service";
 import {Contratos} from "../service/contratos";
-import {Button} from "primeng/button";
-import {TreeTableModule} from "primeng/treetable";
-import {TreeNode} from "primeng/api";
-import {TableModule} from "primeng/table";
-import {DatePipe} from "@angular/common";
+import {DatePipe, NgForOf} from "@angular/common";
 import {SidebarComponent} from "../../common/sidebar/sidebar.component";
 import {Router, RouterOutlet} from "@angular/router";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-contratos-list',
   standalone: true,
   imports: [
-    Button,
-    TreeTableModule,
-    TableModule,
     DatePipe,
     SidebarComponent,
-    RouterOutlet
+    RouterOutlet,
+    NgForOf
   ],
   templateUrl: './contratos-list.component.html',
   styleUrl: './contratos-list.component.css'
 })
 export class ContratosListComponent implements OnInit {
-  contratos: Contratos[] = [];
-  isContractSelected: boolean = false;
+  contratos!: Contratos[];
   id: number = 0;
+  contractSelected = false;
 
 
   constructor(private contratoService: ContratosService, private router: Router) {
@@ -39,35 +34,40 @@ export class ContratosListComponent implements OnInit {
   getContratos() {
     this.contratoService.getContratos().subscribe(
       contratos => {
+        console.log(contratos)
         this.contratos = contratos;
       }
     )
   }
 
-  editContract() {
-    if (!this.isContractSelected) {
-      return;
-    }
-    this.router.navigate(['/home/contracts-edit/', this.id]);
+  setContractName(name: string) {
+    this.contratoService.contractName.next(name);
+  }
 
+
+  editContract() {
+    this.router.navigate(['/home/contracts-edit', this.id]); // Corregido para usar un arreglo
+
+  }
+
+  isContractSelected(contract: Contratos) {
+    this.contractSelected = true;
+    this.id = contract.id; // Asegúrate de que el contrato tenga un campo id
+    this.setContractName(contract.name);
+  }
+
+  disableContractSelected() {
+    this.contractSelected = false;
   }
 
   createContract() {
-
   }
 
   deleteContract() {
-
+    this.contratoService.deteleContract(this.id).subscribe(() => {
+      this.getContratos();
+    });
   }
 
-  onRowSelect(event: any) {
-    this.isContractSelected = true;
-    this.id = event.data.id;
-    console.log("id", this.id)
-  }
-
-  onRowUnselect(event: any) {
-    this.isContractSelected = false;
-  }
 
 }

@@ -1,34 +1,27 @@
 import {Component, OnInit} from '@angular/core';
-import {TreeModule} from "primeng/tree";
-import {TreeNode} from "primeng/api";
+import {ActivatedRoute, RouterLink} from "@angular/router";
+import {ContratosService} from "../../contratos/service/contratos.service";
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [
-    TreeModule
+    RouterLink
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent implements OnInit {
+  contractId: number = 0;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private contratosService: ContratosService) {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.contractId = params['id'];
+    })
   }
 
-  files: TreeNode[] = [
-    {
-      label: 'Contract', selectable: false, expanded: true, expandedIcon: 'pi pi-folder-open',
-      collapsedIcon: 'pi pi-folder',
-      children: [
-        {label: 'Edit Contract', data: {path: 'editar-contrato', icon: 'pi pi-pencil'}, expanded: true},
-        {label: 'Inventory', data: {path: 'inventario/detalles', icon: 'pi pi-list'}, expanded: true},
-        {label: 'File Manager', data: {path: 'gestor-archivos', icon: 'pi pi-file'}, expanded: true},
-      ]
-    },
-  ];
 
 }

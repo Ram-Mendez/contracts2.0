@@ -8,10 +8,8 @@ import com.mendezIndepth.contratos20.repository.AuthorityRepository;
 import com.mendezIndepth.contratos20.repository.ContractRepository;
 import com.mendezIndepth.contratos20.repository.ContractorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -31,6 +29,10 @@ public class ContratosController {
         return contractRepository.findAll();
     }
 
+    @GetMapping("/contracts/{id}")
+    public ContratosEntity getContractByid(@PathVariable Integer id) {
+        return contractRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Contract not found" + id));
+    }
 
     @PostMapping("/contracts")
     public ContratosEntity createContract(@RequestBody ContractDto contractDto) {
@@ -47,5 +49,24 @@ public class ContratosController {
         return contractRepository.save(contract);
     }
 
+    @PutMapping("/contracts/{id}")
+    public ContratosEntity updateContract(@PathVariable Integer id, @RequestBody ContractDto contractDto) {
+        ContratosEntity contract = contractRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Contract not found" + id));
+        AuthorityEntity authority = authorityRepository.findById(contractDto.getAuthorityId())
+                .orElseThrow(() -> new NoSuchElementException("Authority not found" + contractDto.getAuthorityId()));
+        ContractorEntity contractor = contractorRepository.findById(contractDto.getContractorId())
+                .orElseThrow(() -> new NoSuchElementException("Contractor not found" + contractDto.getContractorId()));
+
+        contract.setName(contractDto.getName());
+        contract.setAuthority(authority);
+        contract.setContractor(contractor);
+        return contractRepository.save(contract);
+    }
+
+    @DeleteMapping("/contracts/{id}")
+    @Transactional
+    public void deleteContract(@PathVariable Integer id) {
+        contractRepository.deleteById(id);
+    }
 
 }

@@ -4,9 +4,9 @@ import com.mendezIndepth.contratos20.entity.AuthorityEntity;
 import com.mendezIndepth.contratos20.model.AuthorityDto;
 import com.mendezIndepth.contratos20.repository.AuthorityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 @RestController
 public class AuthorityController {
@@ -14,6 +14,15 @@ public class AuthorityController {
     @Autowired
     private AuthorityRepository authorityRepository;
 
+
+    @GetMapping("/authorities")
+    public List<AuthorityEntity> getContractors() {
+        return authorityRepository.findAll();
+    }
+    @GetMapping("/authorities/{id}")
+    public AuthorityEntity getContractorById(@PathVariable Integer id) {
+        return authorityRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Authority not found" + id));
+    }
 
     @PostMapping("/authorities")
     public AuthorityEntity createAuthority(@RequestBody AuthorityDto authorityDto) {

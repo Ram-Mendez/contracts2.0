@@ -1,40 +1,38 @@
-body, html {
-  height: 100%;
-  margin: 0;
-  overflow: hidden; /* Evita las barras de desplazamiento */
-}
-
-.button-container {
+.actions-container {
   display: flex;
-  margin-bottom: 1rem;
   align-items: center;
-  justify-content: start; /* Centra los botones horizontalmente */
-  width: 100%; /* Asegura que los botones ocupen el mismo ancho que la tarjeta */
-  gap: 10px; /* Añade espacio entre los botones */
+  margin-bottom: 10px;
+  margin-top: 10px
 }
 
-.contratos-container {
+.buttons-card-container {
+  margin-top: -80vh;
+}
+
+.actions-container strong {
+  margin-right: 20px; /* Ajusta el valor para el espacio deseado */
+}
+
+.buttons-container {
   display: flex;
-  position: relative; /* Cambiado a fixed para asegurar posición respecto a la ventana */
-  top: 50px; /* Ajusta este valor según la altura de tu cabezal */
-  left: 287px; /* Ajusta este valor según el ancho de tu barra lateral */
-  height: calc(100% - 300px); /* Altura total menos la altura del cabezal */
-  width: calc(100% - 300px); /* Ancho total menos el ancho de la barra lateral */
-  padding: 10px; /* Añade margen interno */
-  box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor */
-  overflow: hidden; /* Evita scrollbars internos */
-  margin-bottom: 11vh
+  gap: 10px; /* Ajusta el valor para el espacio entre botones */
 }
 
-.contratos-list {
-  width: 60%; /* Ajusta este valor según sea necesario */
-  padding: 10px;
-  box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor */
+.card {
+  width: 238px;
+  margin-top: 10px
 }
 
 .contratos-detail {
-  width: 50%; /* Ajusta este valor según sea necesario */
-  padding: 10px;
-  box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor */
+  margin-left: 10px
+}
 
+.contratos-list {
+  margin-left: 15px;
+  border: 1px solid red;
+  width: 100vw;
+  height: 86vh;
+}
+.table-hover{
+  cursor: pointer;
 }
