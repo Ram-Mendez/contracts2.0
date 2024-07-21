@@ -5,21 +5,45 @@
   width: 100%; /* Ocupa el 100% del ancho de la ventana */
   z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
+
 .a-margin {
   margin-left: 10px;
 }
+
 .a-margin:hover {
   background-color: lightblue; /* Cambia el color de fondo al pasar el cursor */
   border-radius: 10px; /* Añade un radio de borde */
-
 }
+
 .user-email {
   margin-top: 10px;
   margin-right: 10px;
 }
+
 .btn-logout {
   margin-right: 20px; /* Ajusta el valor del margen según sea necesario */
 }
-.text-info {
-  font-size: 24px;
+
+.contract-name {
+  position: absolute;
+  top: 50%; /* Ajusta según sea necesario */
+  left: 24.5%; /* Ajusta según sea necesario */
+  transform: translate(-50%, -50%); /* Centra vertical y horizontalmente */
+}
+
+.inventory-item-name {
+  position: absolute;
+  top: 50%; /* Ajusta según sea necesario */
+  left: calc(24.5% + 41.5rem); /* Ajusta según sea necesario para la distancia deseada */
+  transform: translateY(-50%);
+}
+
+.text-danger {
+  font-size: 23px;
+  color: red;
+}
+
+.text-danger2 {
+  color: red;
+  font-size: 23px;
 }

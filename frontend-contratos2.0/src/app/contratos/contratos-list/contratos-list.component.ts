@@ -5,6 +5,7 @@ import {DatePipe, NgForOf} from "@angular/common";
 import {SidebarComponent} from "../../common/sidebar/sidebar.component";
 import {Router, RouterOutlet} from "@angular/router";
 import {Subject} from "rxjs";
+import {HeaderComponent} from "../../common/header/header.component";
 
 @Component({
   selector: 'app-contratos-list',
@@ -34,7 +35,6 @@ export class ContratosListComponent implements OnInit {
   getContratos() {
     this.contratoService.getContratos().subscribe(
       contratos => {
-        console.log(contratos)
         this.contratos = contratos;
       }
     )
@@ -42,6 +42,8 @@ export class ContratosListComponent implements OnInit {
 
   setContractName(name: string) {
     this.contratoService.contractName.next(name);
+    sessionStorage.setItem('contractName', name);
+
   }
 
 
@@ -58,9 +60,11 @@ export class ContratosListComponent implements OnInit {
 
   disableContractSelected() {
     this.contractSelected = false;
+    this.setContractName('');
   }
 
   createContract() {
+    this.router.navigate(['/home/contracts-add']); // Redirige a /home/contracts-add
   }
 
   deleteContract() {

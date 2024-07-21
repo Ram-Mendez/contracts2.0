@@ -1,0 +1,46 @@
+.container {
+  width: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 12vh;
+  margin-top: -3px;
+}
+
+.col-12 {
+  flex: 1;
+  padding: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5px; /* Ajuste de margen horizontal entre botones */
+}
+
+.btn-info {
+  width: 50px;
+  margin: 0; /* Eliminar márgenes en los botones */
+}
+
+.button-text {
+  margin-top: 5px; /* Espacio entre el botón y el texto */
+  font-size: 14px;
+}
+
+.card {
+  width: 180px;
+  height: 1px;
+  margin-top: 10px;
+}
+
+.adjust-margin {
+  margin-top: -35px;
+}

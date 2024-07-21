@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from "../../Login/service/login.service";
-import {Router, RouterLink} from "@angular/router";
+import {NavigationEnd, Router, RouterLink} from "@angular/router";
 import {ContratosService} from "../../contratos/service/contratos.service";
+import {filter, Subscription} from "rxjs";
+import {ContratosInventoryService} from "../../contratos/service/contratos-inventory.service";
 
 @Component({
   selector: 'app-header',
@@ -15,8 +16,19 @@ import {ContratosService} from "../../contratos/service/contratos.service";
 export class HeaderComponent implements OnInit {
   userEmail = '';
   contractName = '';
+  navigationSubscription!: Subscription;
+  inventoryItemName = '';
 
-  constructor(private router: Router, private contratosService: ContratosService) {
+
+  constructor(private router: Router,
+              public contratosInventoryService: ContratosInventoryService,
+              private contratosService: ContratosService,) {
+    // Suscribirse a eventos de navegación
+    this.navigationSubscription = this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.checkCurrentRoute();
+    });
   }
 
   getUserEmail() {
@@ -28,6 +40,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.getUserEmail()
     this.getContractName();
+    this.resetContractNameOnUpdate();
+    this.setContractNameFromStorage();
+  }
+
+  getInventoryName() {
+    return this.contratosInventoryService.inventoryItemName;
   }
 
   getContractName() {
@@ -35,12 +53,39 @@ export class HeaderComponent implements OnInit {
       contractName => {
         this.contractName = contractName;
       }
-    )
+    );
+    sessionStorage.getItem('contractName');
+    sessionStorage.getItem('inventoryItemName')
+
+  }
+
+  public resetContractNameOnUpdate() {
+    this.contratosService.resetHeader.subscribe(
+      () => {
+        this.contractName = '';
+      }
+    );
+  }
+
+  setContractNameFromStorage() {
+    const storedContractName = sessionStorage.getItem('contractName');
+    if (storedContractName) {
+      this.contractName = storedContractName;
+    }
+  }
+
+  checkCurrentRoute() {
+    // Verificar la ruta actual y resetear el nombre del contrato si no es la página de edición de contratos
+    const currentUrl = this.router.url;
+    if (!currentUrl.includes('/home/contracts-edit')) {
+      this.contractName = '';
+      sessionStorage.removeItem('contractName');
+    }
   }
 
 
   logout() {
     this.router.navigate(['/login']);
-    sessionStorage.removeItem('userEmail')
+    sessionStorage.removeItem('userEmail');
   }
 }

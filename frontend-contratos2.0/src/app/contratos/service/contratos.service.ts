@@ -11,6 +11,8 @@ export class ContratosService {
   contratosUrl = 'http://localhost:8080/contracts';
 
   contractName = new Subject<string>();
+  resetHeader = new Subject<void>();
+  contractId = new Subject<number>();
 
   constructor(private http: HttpClient) {
   }
@@ -23,8 +25,8 @@ export class ContratosService {
     return this.http.get<Contratos>(this.contratosUrl + '/' + id);
   }
 
-  createContract(): Observable<Contratos> {
-    return this.http.post<Contratos>(this.contratosUrl, {});
+  createContract(contract: Contratos): Observable<Contratos> {
+    return this.http.post<Contratos>(this.contratosUrl, contract);
   }
 
   updateContract(id: number, contract: ɵTypedOrUntyped<{

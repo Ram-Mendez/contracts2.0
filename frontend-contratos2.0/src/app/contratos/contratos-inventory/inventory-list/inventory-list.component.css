@@ -1,0 +1,10 @@
+.container {
+  margin-top: 15px
+}
+.text-info {
+  font-size: 25px;
+  cursor: pointer;
+}
+.table {
+  width: 65vh
+}

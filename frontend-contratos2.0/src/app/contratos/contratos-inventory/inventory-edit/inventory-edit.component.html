@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-12">
+    <div class="little-header">
+      <strong>Edit Item</strong>
+    </div>
+    <div class="container">
+      <form [formGroup]="editInventoryItem" (ngSubmit)="editItem()">
+        <div class="form-group mb-2">
+          <label for="name"><strong>Item Name</strong></label>
+          <input type="text" id="name" formControlName="itemName" class="form-control">
+        </div>
+        <div class="form-group mb-2">
+          <label for="quantity"><strong>Quantity</strong></label>
+          <input type="number" id="quantity" formControlName="quantity" class="form-control">
+        </div>
+        <div class="form-group mb-2">
+          <label for="unitPrice"><strong>Unit Price</strong></label>
+          <input type="number" id="unitPrice" formControlName="unitPrice" class="form-control">
+        </div>
+        <div class="button-container">
+          <button type="submit" class="btn btn-info">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

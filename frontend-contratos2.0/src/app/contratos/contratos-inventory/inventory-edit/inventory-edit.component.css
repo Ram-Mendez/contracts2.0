@@ -1,0 +1,21 @@
+
+.container {
+  width: 50vh;
+  height: 50vh;
+  padding: 20px; /* Añade padding para espacio interno */
+  margin-top: -11px;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total del contenedor */
+}
+
+
+.button-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.little-header {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+}

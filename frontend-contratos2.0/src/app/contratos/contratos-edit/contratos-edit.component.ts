@@ -8,7 +8,9 @@ import {Authority} from "../service/authority";
 import {Contractor} from "../service/contractor";
 import {AuthoritiesService} from "../service/authorities.service";
 import {ContractorsService} from "../service/contractors.service";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
+import {ContratosInventoryComponent} from "../contratos-inventory/contratos-inventory.component";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-contratos-edit',
@@ -17,7 +19,9 @@ import {NgForOf} from "@angular/common";
     RouterOutlet,
     SidebarComponent,
     ReactiveFormsModule,
-    NgForOf
+    NgForOf,
+    ContratosInventoryComponent,
+    NgIf
   ],
   templateUrl: './contratos-edit.component.html',
   styleUrl: './contratos-edit.component.css'
@@ -43,11 +47,11 @@ export class ContratosEditComponent implements OnInit {
 
   });
 
-
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.contractId = params['id'];
     });
+    this.contratoService.contractId.next(this.contractId);
     this.getContract();
     this.getAuthorities();
     this.getContractors()
@@ -56,7 +60,6 @@ export class ContratosEditComponent implements OnInit {
   getContract() {
     this.contratoService.getContractById(this.contractId).subscribe(contract => {
       this.contract = contract;
-      console.log(this.contract);
       this.contractForm.patchValue({
         name: this.contract.name,
         // Asumiendo que authority y contractor son objetos y tienen una propiedad id
@@ -79,8 +82,6 @@ export class ContratosEditComponent implements OnInit {
       contractors => {
         this.contractors = contractors
       })
-
-
   }
 
   updateContract() {
@@ -89,7 +90,9 @@ export class ContratosEditComponent implements OnInit {
       console.log(formValue);
       this.contratoService.updateContract(this.contractId, formValue).subscribe(
         (response) => {
-          console.log(response)
+          console.log(response);
+          this.contratoService.resetHeader.next(); // Resetea el header después de la actualización
+
           this.router.navigate(['/home']);
         },
         (error) => {
@@ -97,4 +100,9 @@ export class ContratosEditComponent implements OnInit {
         });
     }
   }
+
+  isInventoryTabSelected(): boolean {
+    return this.router.url.includes('/inventory');
+  }
+
 }

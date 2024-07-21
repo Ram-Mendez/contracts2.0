@@ -13,11 +13,12 @@
 .list-group {
   width: 30vh;
   height: 500px; /* Ajustar la altura según sea necesario */
+
 }
 
 .list-group-container {
   position: fixed;
-  top: 55px;
+  top: 56px;
   left: 0;
   z-index: 1000;
   background-color: #efefef;
