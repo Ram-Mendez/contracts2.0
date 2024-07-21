@@ -1,25 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import {MenubarModule} from "primeng/menubar";
-import {MenuItem} from "primeng/api";
 import {LoginService} from "../../Login/service/login.service";
-import {ButtonDirective} from "primeng/button";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
+import {ContratosService} from "../../contratos/service/contratos.service";
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
-    MenubarModule,
-    ButtonDirective
+    RouterLink
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
-  items: MenuItem[] | undefined;
   userEmail = '';
+  contractName = '';
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private router: Router, private contratosService: ContratosService) {
   }
 
   getUserEmail() {
@@ -29,24 +26,16 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUserEmail()
+    this.getContractName();
+  }
 
-    this.items = [
-      {
-        label: 'Home',
-        icon: 'pi pi-home',
-        routerLink: '/home'
-      },
-      {
-        label: 'Administration',
-        icon: 'pi pi-cog'
-      },
-      {
-        label: 'Contact',
-        icon: 'pi pi-envelope',
-        routerLink: '/contact-us'
+  getContractName() {
+    this.contratosService.contractName.subscribe(
+      contractName => {
+        this.contractName = contractName;
       }
-    ];
-
+    )
   }
 
 

@@ -9,7 +9,6 @@ import java.time.LocalDate;
 @Setter
 public class ContractDto {
 
-    private Integer id;
     private String name;
     private Integer contractorId;
     private Integer authorityId;

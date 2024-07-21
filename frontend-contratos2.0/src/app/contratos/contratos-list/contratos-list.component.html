@@ -1,83 +1,54 @@
-<div class="contratos-container">
-  <div class="contratos-list">
-    <div class="button-container">
-      <strong>Actions:</strong>
-      <p-button (click)="createContract()" severity="help">
-        <i class="pi pi-plus"></i>
-      </p-button>
-      <p-button [disabled]="!isContractSelected" (click)="editContract()" severity="help">
-        <i class="pi pi-pencil"></i>
-      </p-button>
-      <p-button [disabled]="!isContractSelected" (click)="deleteContract()" severity="help">
-        <i class="pi pi-trash"></i>
-      </p-button>
-    </div>
+<div class="actions-container">
+  <div class="buttons-card-container">
+    <div class="buttons-container">
+      <strong class="mt-2">Actions:</strong>
 
-    <div class="card">
-      <p-table
-        selectionMode="single"
-        [value]="contratos"
-        (onRowSelect)="onRowSelect($event)"
-        (onRowUnselect)="onRowUnselect($event)"
-        [tableStyle]="{ 'min-width': '50rem' }"
-        [style]="{ 'width': '100%' }">
-        <ng-template pTemplate="header">
-          <tr>
-            <th pSortableColumn="id">Id
-              <p-sortIcon field="id"></p-sortIcon>
-            </th>
-            <th pSortableColumn="name">Name
-              <p-sortIcon field="name"></p-sortIcon>
-            </th>
-            <th pSortableColumn="startDate">Start Date
-              <p-sortIcon field="startDate"></p-sortIcon>
-            </th>
-            <th pSortableColumn="contractor">Contractor
-              <p-sortIcon field="contractor"></p-sortIcon>
-            </th>
-            <th pSortableColumn="authority">Authority
-              <p-sortIcon field="authority"></p-sortIcon>
-            </th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-contrato>
-          <tr [pSelectableRow]="contrato">
-            <td>{{ contrato.id }}</td>
-            <td>{{ contrato.name }}</td>
-            <td>{{ contrato.startDate | date }}</td>
-            <td>{{ contrato.contractor.id }}</td>
-            <td>{{ contrato.authority.id }}</td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
+      <button class="btn btn-info" (click)="createContract()">
+        <i class="bi bi-plus-lg"></i>
+      </button>
 
+      <button class="btn btn-info" [disabled]="!contractSelected" (click)="editContract()">
+        <i class="bi bi-pencil"></i>
+      </button>
+
+      <button class="btn btn-info" [disabled]="!contractSelected" (click)="deleteContract()">
+        <i class="bi bi-trash"></i>
+      </button>
+
+    </div>
+    <div class="card"></div>
   </div>
 
-  <div class="contratos-detail">
-    <router-outlet></router-outlet>
+  <div class="contratos-list">
+    <table class="table   table-hover">
+      <thead class="bg-secondary">
+      <tr class="table-active">
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Authority</th>
+        <th scope="col">Contractor</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let contrato of contratos"
+          (click)="isContractSelected(contrato)"
+          (dblclick)="disableContractSelected()">
+
+        <th scope="row">{{ contrato.id }}</th>
+        <td class="">{{ contrato.name }}</td>
+        <td>{{ contrato.startDate | date }}</td>
+        <td>{{ contrato.authority.name }}</td>
+        <td>{{ contrato.contractor.name }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="contratos-detail">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

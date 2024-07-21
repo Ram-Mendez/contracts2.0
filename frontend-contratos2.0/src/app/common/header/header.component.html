@@ -1,11 +1,15 @@
-<div class="card">
-  <p-menubar [model]="items">
-    <ng-template pTemplate="end">
-      <strong>{{ getUserEmail() }}</strong>
-      <button pButton (click)="logout()" label="Logout" icon="pi pi-sign-out" class="logout-button"></button>
-    </ng-template>
-  </p-menubar>
-</div>
+<nav class="navbar bg-light d-flex justify-content-between">
+  <div class="d-flex">
+    <a class="navbar-brand a-margin" routerLink="/home">Home</a>
+    <a class="navbar-brand a-margin" routerLink="/home/administration">Administration</a>
+    <a class="navbar-brand a-margin" routerLink="/contact-us">Contact</a>
+  </div>
+    <div class="contract-name">
+      <strong class=" text-info">{{ contractName }}</strong>
+    </div>
 
-
-
+  <div class="d-flex">
+    <div class="user-email"><strong>{{ userEmail }}</strong></div>
+    <button class="btn btn-danger btn-logout" (click)="logout()">Logout</button>
+  </div>
+</nav>

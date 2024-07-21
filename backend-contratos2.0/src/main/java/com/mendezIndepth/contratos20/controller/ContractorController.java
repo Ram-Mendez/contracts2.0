@@ -4,15 +4,25 @@ import com.mendezIndepth.contratos20.entity.ContractorEntity;
 import com.mendezIndepth.contratos20.model.ContractorDto;
 import com.mendezIndepth.contratos20.repository.ContractorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 @RestController
 public class ContractorController {
 
     @Autowired
     private ContractorRepository contractorRepository;
+
+    @GetMapping("/contractors")
+    public List<ContractorEntity> getContractors() {
+        return contractorRepository.findAll();
+    }
+
+    @GetMapping("/contractors/{id}")
+    public ContractorEntity getContractorById(@PathVariable Integer id) {
+        return contractorRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Contractor not found" + id));
+    }
 
     @PostMapping("/contractors")
     public ContractorEntity createContractor(@RequestBody ContractorDto contractorDto) {
