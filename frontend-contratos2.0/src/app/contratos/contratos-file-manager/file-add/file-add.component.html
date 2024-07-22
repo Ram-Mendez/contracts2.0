@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-12">
+    <div class="container">
+      <form [formGroup]="fileForm">
+        <div class="form-group">
+          <label class="form-label" for="fileName"><strong>File Name</strong></label>
+          <input type="file"
+                 (change)="onFileChange($event)"
+                 id="fileName"
+                 class="form-control form-input"
+                 multiple>
+        </div>
+        <div class="button-container">
+          <button (click)="uploadFile()" class="btn btn-info">Create Contract</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

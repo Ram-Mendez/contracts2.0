@@ -6,6 +6,9 @@ import com.mendezIndepth.contratos20.model.ContratoInventoryDto;
 import com.mendezIndepth.contratos20.repository.ContractRepository;
 import com.mendezIndepth.contratos20.repository.ContratoInventory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -39,15 +42,37 @@ public class ContratosInventoryController {
         return inventoryRepository.findByContratoId(id);
     }
 
-    // method works but needs improvement to include contract
-    // reasearch if the passing of the contract is needed
-    @PutMapping("/inventory/{inventoryId}")
-    public ContratosInventory updateInventoryItem(@PathVariable Integer inventoryId, @RequestBody ContratoInventoryDto inventoryDto) {
-        ContratosInventory contractInventory = inventoryRepository.findById(inventoryId).orElseThrow(() -> new NoSuchElementException("Inventory item not found" + inventoryId));
-        contractInventory.setItemName(inventoryDto.getItemName());
-        contractInventory.setQuantity(inventoryDto.getQuantity());
-        contractInventory.setUnitPrice(inventoryDto.getUnitPrice());
+    @GetMapping("/inventory/{inventoryId}")
+    public ContratosInventory getInventoryItem(@PathVariable Integer inventoryId) {
+        return inventoryRepository.findById(inventoryId).orElseThrow(() -> new NoSuchElementException("Inventory item not found" + inventoryId));
+    }
 
-        return inventoryRepository.save(contractInventory);
+    @PutMapping("/contracts/{id}/inventory/{inventoryId}")
+    @Transactional
+    public ContratosInventory updateInventoryItem(@PathVariable Integer id, @PathVariable Integer
+            inventoryId, @RequestBody ContratoInventoryDto inventoryDto) {
+        ContratosEntity contrato = contractRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Contract not found" + id));
+        ContratosInventory inventoryItem = inventoryRepository.findById(inventoryId).orElseThrow(() -> new NoSuchElementException("Inventory item not found" + inventoryId));
+        inventoryItem.setContrato(contrato);
+        inventoryItem.setItemName(inventoryDto.getItemName());
+        inventoryItem.setQuantity(inventoryDto.getQuantity());
+        inventoryItem.setUnitPrice(inventoryDto.getUnitPrice());
+
+        return inventoryRepository.save(inventoryItem);
+    }
+
+    @DeleteMapping("/contracts/{id}/inventory/{inventoryId}")
+    @Transactional
+    public ResponseEntity<HttpStatus> deleteInventoryItem(@PathVariable Integer id, @PathVariable Integer inventoryId) {
+        ContratosEntity contrato = contractRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Contract not found" + id));
+        ContratosInventory inventoryItem = inventoryRepository.findById(inventoryId)
+                .orElseThrow(() -> new NoSuchElementException("Inventory item not found" + inventoryId));
+
+        if (!inventoryItem.getContrato().getId().equals(contrato.getId())) {
+            throw new IllegalArgumentException("Inventory item does not belong to the specified contract");
+        }
+        inventoryRepository.delete(inventoryItem);
+        return ResponseEntity.ok().build();
     }
 }

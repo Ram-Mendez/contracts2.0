@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-12">
+    <div class="container text-center">
+      <strong>File Actions:</strong>
+      <div class="button-container">
+        <div class="button-group">
+          <button (click)="addFile()" class="btn btn-info"><i class="bi bi-plus-lg"></i></button>
+          <div class="button-text"><strong>Add </strong></div>
+        </div>
+        <div class="button-group">
+          <button (click)="showFiles()" class="btn btn-info"><i class="bi bi-list-ul"></i></button>
+          <div class="button-text"><strong>List</strong></div>
+        </div>
+      </div>
+      <div class="card"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="adjust-margin">
+      <app-file-add *ngIf="showAddFileComponent"></app-file-add>
+      <app-file-list *ngIf="showFileListComponent"></app-file-list>
+    </div>
+  </div>
+</div>

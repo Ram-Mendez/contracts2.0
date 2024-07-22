@@ -9,7 +9,7 @@
         </div>
         <div class="button-group">
           <button (click)="showList()" class="btn btn-info"><i class="bi bi-list-ul"></i></button>
-          <div class="button-text"><strong>Edit</strong></div>
+          <div class="button-text"><strong>List</strong></div>
         </div>
       </div>
       <div class="card"></div>
@@ -20,7 +20,7 @@
   <div class="col-12">
     <div class="adjust-margin">
       <app-inventory-add *ngIf="showAddInventoryComponent" (itemCreated)="ontItemCreated()"></app-inventory-add>
-      <app-inventory-list *ngIf="showInventoryListComponent" (editInventory)="loadEditInventory()" ></app-inventory-list>
+      <app-inventory-list *ngIf="showInventoryListComponent" (editInventory)="loadEditInventory()"></app-inventory-list>
       <app-inventory-edit *ngIf="showInventoryEditComponent"></app-inventory-edit>
     </div>
   </div>

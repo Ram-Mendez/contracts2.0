@@ -11,6 +11,7 @@ import {ContractorsService} from "../service/contractors.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {ContratosInventoryComponent} from "../contratos-inventory/contratos-inventory.component";
 import {Subject} from "rxjs";
+import {ContratosFileManagerComponent} from "../contratos-file-manager/contratos-file-manager.component";
 
 @Component({
   selector: 'app-contratos-edit',
@@ -21,7 +22,8 @@ import {Subject} from "rxjs";
     ReactiveFormsModule,
     NgForOf,
     ContratosInventoryComponent,
-    NgIf
+    NgIf,
+    ContratosFileManagerComponent
   ],
   templateUrl: './contratos-edit.component.html',
   styleUrl: './contratos-edit.component.css'
@@ -102,7 +104,7 @@ export class ContratosEditComponent implements OnInit {
   }
 
   isInventoryTabSelected(): boolean {
-    return this.router.url.includes('/inventory');
+    return this.router.url.includes('/inventory') || this.router.url.includes('/files');
   }
 
 }

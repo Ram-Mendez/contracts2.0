@@ -12,6 +12,7 @@ import {ContratosInventoryComponent} from "./contratos/contratos-inventory/contr
 import {InventoryAddComponent} from "./contratos/contratos-inventory/inventory-add/inventory-add.component";
 import {InventoryListComponent} from "./contratos/contratos-inventory/inventory-list/inventory-list.component";
 import {InventoryEditComponent} from "./contratos/contratos-inventory/inventory-edit/inventory-edit.component";
+import {ContratosFileManagerComponent} from "./contratos/contratos-file-manager/contratos-file-manager.component";
 
 export const routes: Routes = [
     // router-outlet de app-component carga estas rutas
@@ -20,9 +21,9 @@ export const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'contact-us', component: ContactUsComponent},
 
+    // el children de "home" carga el contenido del router-outlet
+    // de home.component.html
     {
-      // el children de "home" carga el contenido del router-outlet
-      // de home.component.html
       path: 'home', component: HomeComponent, children: [
         {path: '', component: ContratosListComponent},
         {path: 'contracts-add', component: ContratosAddComponent},
@@ -30,11 +31,13 @@ export const routes: Routes = [
           path: 'contracts-edit/:id', component: ContratosEditComponent,
           children: [
             {path: 'inventory', component: ContratosInventoryComponent},
+            {path: 'files', component: ContratosFileManagerComponent},
 
           ]
         }, // Ruta modificada para incluir :id
         {path: 'administration', component: AdministrationComponent},
-      ]
+      ],
+      // path: 'home/contracts/'
     },
     {path: '**', redirectTo: 'home'}
   ]

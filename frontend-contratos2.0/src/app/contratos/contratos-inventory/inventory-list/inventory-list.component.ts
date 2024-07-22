@@ -26,6 +26,7 @@ export class InventoryListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private contratoService: ContratosService,
     private contratosInventoryService: ContratosInventoryService,) {
   }
 
@@ -51,15 +52,28 @@ export class InventoryListComponent implements OnInit {
     this.inventoryId = inventory.id;
     this.inventorySelected.emit(inventory.id);
     this.contratosInventoryService.setInventoryItemName(inventory.itemName);
+    this.contratosInventoryService.setInventoryId(inventory.id); // Establecer el id en el servicio
   }
 
   disableInventorySelected() {
     this.itemSelected = false;
   }
 
-
   loadInventoryEdit(inventory: any) {
+    const inventoryItem = this.allInventory.find((item: any) => item.id === inventory.id)
+    if (inventoryItem) {
+      this.contratosInventoryService.setInventoryItemName(inventoryItem.itemName)
+    }
     this.editInventory.emit(inventory.id);  // Emitir el ID del inventario para la edición
+  }
+
+  deleteInventoryItem(inventoryId: number) {
+    this.contratosInventoryService.deleteInventoryItem(this.contratoId, this.inventoryId)
+      .subscribe(() => {
+        this.getAllInventory();
+        this.disableInventorySelected();
+        this.contratosInventoryService.emitInventoryItemDeleted();
+      });
   }
 
 

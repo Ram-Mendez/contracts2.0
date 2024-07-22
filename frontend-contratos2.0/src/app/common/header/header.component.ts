@@ -29,6 +29,8 @@ export class HeaderComponent implements OnInit {
     ).subscribe(() => {
       this.checkCurrentRoute();
     });
+    this.contratosInventoryService.emitInventoryItemDeleted();
+
   }
 
   getUserEmail() {
@@ -59,6 +61,7 @@ export class HeaderComponent implements OnInit {
 
   }
 
+
   public resetContractNameOnUpdate() {
     this.contratosService.resetHeader.subscribe(
       () => {
@@ -80,6 +83,8 @@ export class HeaderComponent implements OnInit {
     if (!currentUrl.includes('/home/contracts-edit')) {
       this.contractName = '';
       sessionStorage.removeItem('contractName');
+      this.contratosInventoryService.setInventoryItemName('');
+
     }
   }
 

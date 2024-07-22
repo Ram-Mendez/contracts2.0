@@ -11,6 +11,7 @@
             <th scope="col">Unit Price</th>
             <th scope="col">Total Price</th>
             <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
           </thead>
           <tbody>
@@ -23,6 +24,7 @@
             <td>{{ item.unitPrice | currency:'€' }}</td>
             <td>{{ item.totalValue | currency:'€' }}</td>
             <td><i (click)="loadInventoryEdit(item.id)" class="bi bi-pencil-square text-info"></i>
+            <td><i (click)="deleteInventoryItem(item.id)" class="bi bi-trash text-info"></i>
             </td>
           </tr>
           </tbody>

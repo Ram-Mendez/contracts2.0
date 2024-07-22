@@ -38,12 +38,12 @@
   transform: translateY(-50%);
 }
 
-.text-danger {
+.text-info {
   font-size: 23px;
-  color: red;
+  color: #0dcaf0;
 }
 
 .text-danger2 {
-  color: red;
+  color: #0dcaf0;
   font-size: 23px;
 }

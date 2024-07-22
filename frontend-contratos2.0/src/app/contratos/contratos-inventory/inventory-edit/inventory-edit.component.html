@@ -4,7 +4,7 @@
       <strong>Edit Item</strong>
     </div>
     <div class="container">
-      <form [formGroup]="editInventoryItem" (ngSubmit)="editItem()">
+      <form [formGroup]="editInventoryItem">
         <div class="form-group mb-2">
           <label for="name"><strong>Item Name</strong></label>
           <input type="text" id="name" formControlName="itemName" class="form-control">
@@ -14,11 +14,11 @@
           <input type="number" id="quantity" formControlName="quantity" class="form-control">
         </div>
         <div class="form-group mb-2">
-          <label for="unitPrice"><strong>Unit Price</strong></label>
+          <label for="unitPrice"><strong>Unit Price(€)</strong></label>
           <input type="number" id="unitPrice" formControlName="unitPrice" class="form-control">
         </div>
         <div class="button-container">
-          <button type="submit" class="btn btn-info">Save Changes</button>
+          <button (click)="editItem()" type="submit" class="btn btn-info">Save Changes</button>
         </div>
       </form>
     </div>

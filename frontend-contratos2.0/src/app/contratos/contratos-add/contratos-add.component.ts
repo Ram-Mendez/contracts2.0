@@ -46,7 +46,7 @@ export class ContratosAddComponent implements OnInit {
 
   createContract() {
     this.contratoService.createContract(this.contractForm.value as unknown as Contratos).subscribe(
-      () => {
+      (newContract: Contratos) => {
         this.contractForm.reset();
         this.router.navigate(['/home']);
       }
@@ -64,4 +64,6 @@ export class ContratosAddComponent implements OnInit {
       this.authorities = authorities;
     });
   }
+
+
 }

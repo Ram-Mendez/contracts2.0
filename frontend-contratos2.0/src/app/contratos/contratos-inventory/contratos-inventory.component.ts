@@ -23,6 +23,7 @@ import {ContratosInventoryService} from "../service/contratos-inventory.service"
 })
 export class ContratosInventoryComponent implements OnInit {
   contratoId: any;
+  inventoryList: any;
   showAddInventoryComponent = false;
   showInventoryListComponent = false;
   showInventoryEditComponent = false;
@@ -52,6 +53,7 @@ export class ContratosInventoryComponent implements OnInit {
     this.showInventoryListComponent = true;
     this.showAddInventoryComponent = false;
     this.showInventoryEditComponent = false;
+    this.refreshInventoryList();
   }
 
   ontItemCreated() {
@@ -62,6 +64,14 @@ export class ContratosInventoryComponent implements OnInit {
     this.showAddInventoryComponent = false;
     this.showInventoryListComponent = false;
     this.showInventoryEditComponent = true;
+  }
+
+  refreshInventoryList() {
+    this.contratosInventoryService.getInventory(this.contratoId).subscribe(
+      inventory => {
+        this.inventoryList = inventory;
+      }
+    )
   }
 
 }

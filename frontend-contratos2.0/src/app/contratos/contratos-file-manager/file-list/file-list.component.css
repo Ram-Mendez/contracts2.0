@@ -1,0 +1,17 @@
+.container {
+  width: 66vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 62vh;
+  margin-top: 35px;
+}
+
+.text-info {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.table {
+  width: 65vh
+}
