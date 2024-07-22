@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-3">
+    <div class="container">
+      <div class="header-container">
+        <div class="header ">
+          <div class="actions-header">
+            <strong>Actions:</strong>
+          </div>
+          <div class="button-container mt-1">
+            <div class="btn-text-container mb-2">
+              <button class="btn btn-info w-100" (click)="addUser()">
+                <i class="bi bi-plus-lg"></i>
+              </button>
+              <strong>Add</strong>
+            </div>
+            <div class="btn-text-container mb-2">
+              <button class="btn btn-info w-100" (click)="listUsers()">
+                <i class="bi bi-list-ul"></i>
+              </button>
+              <strong>List</strong>
+            </div>
+          </div>
+          <div class="card">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="content p-4">
+      <form style="width: 90%; margin: auto;">
+        <div class="form-group">
+          <label for="name"><strong>Name</strong></label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name" style="width: 100%;">
+        </div>
+        <div class="form-group">
+          <label for="lastname"><strong>Last Name</strong></label>
+          <input type="text" class="form-control" id="lastname" placeholder="Enter last name" style="width: 100%;">
+        </div>
+        <div class="form-group">
+          <label for="email"><strong>Email</strong></label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" style="width: 100%;">
+        </div>
+        <div class="form-group">
+          <label for="phonenumber"><strong>Phone Number</strong></label>
+          <input type="tel" class="form-control" id="phonenumber" placeholder="Enter phone number" style="width: 100%;">
+        </div>
+        <div class="form-group">
+          <label for="roles"><strong>Roles</strong></label>
+          <select class="form-control" id="roles" style="width: 100%;">
+            <option>Admin</option>
+            <option>User</option>
+            <option>Viewer</option>
+          </select>
+        </div>
+        <div class="button-container">
+          <button type="submit" class="btn btn-info mt-3">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

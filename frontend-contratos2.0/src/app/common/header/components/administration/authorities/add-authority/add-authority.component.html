@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="p-4">
+    <form [formGroup]="authorityForm" style="width: 90%; margin: auto;">
+      <div class="form-group">
+        <label for="roleName"><strong>Authority Name</strong></label>
+        <input type="text" class="form-control" formControlName="name" id="roleName" placeholder="Enter name">
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="status"><strong>Status</strong></label>
+            <select class="form-control custom-select" formControlName="status" id="status">
+              <option value="" disabled selected>Select status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="priority"><strong>Priority</strong></label>
+            <select class="form-control custom-select" formControlName="priority" id="priority">
+              <option value="" disabled selected>Select priority</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="button-container">
+        <button (click)="createAuthority()" [disabled]="authorityForm.invalid" class="btn btn-info mt-3">Create Authority</button>
+      </div>
+    </form>
+  </div>
+</div>

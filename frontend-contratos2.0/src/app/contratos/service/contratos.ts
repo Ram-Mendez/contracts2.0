@@ -1,5 +1,5 @@
-import {Contractor} from "./contractor";
-import {Authority} from "./authority";
+import {Contractor} from "../../common/header/components/administration/service/contractor";
+import {Authority} from "../../common/header/components/administration/service/authority";
 
 export class Contratos {
   id: number;

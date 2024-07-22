@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthoritiesService} from "../service/authorities.service";
+import {AuthoritiesService} from "../../common/header/components/administration/service/authorities.service";
 import {Router} from "@angular/router";
 import {ContratosService} from "../service/contratos.service";
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ContractorsService} from "../service/contractors.service";
-import {Contractor} from "../service/contractor";
-import {Authority} from "../service/authority";
+import {ContractorsService} from "../../common/header/components/administration/service/contractors.service";
+import {Contractor} from "../../common/header/components/administration/service/contractor";
+import {Authority} from "../../common/header/components/administration/service/authority";
 import {NgForOf} from "@angular/common";
 import {Contratos} from "../service/contratos";
 

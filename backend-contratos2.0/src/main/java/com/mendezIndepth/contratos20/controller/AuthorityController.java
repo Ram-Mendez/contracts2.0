@@ -15,21 +15,24 @@ public class AuthorityController {
     private AuthorityRepository authorityRepository;
 
 
-    @GetMapping("/authorities")
-    public List<AuthorityEntity> getContractors() {
-        return authorityRepository.findAll();
-    }
-    @GetMapping("/authorities/{id}")
-    public AuthorityEntity getContractorById(@PathVariable Integer id) {
-        return authorityRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Authority not found" + id));
-    }
-
     @PostMapping("/authorities")
     public AuthorityEntity createAuthority(@RequestBody AuthorityDto authorityDto) {
         AuthorityEntity authority = new AuthorityEntity();
         authority.setName(authorityDto.getName());
+        authority.setStatus(authorityDto.getStatus());
+        authority.setPriority(authorityDto.getPriority());
         authorityRepository.save(authority);
         return authority;
+    }
+
+    @GetMapping("/authorities")
+    public List<AuthorityEntity> getContractors() {
+        return authorityRepository.findAll();
+    }
+
+    @GetMapping("/authorities/{id}")
+    public AuthorityEntity getContractorById(@PathVariable Integer id) {
+        return authorityRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Authority not found" + id));
     }
 }
 

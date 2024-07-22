@@ -18,7 +18,6 @@ export class InventoryAddComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
               private contratosInventoryService: ContratosInventoryService,
               private fb: FormBuilder) {
   }

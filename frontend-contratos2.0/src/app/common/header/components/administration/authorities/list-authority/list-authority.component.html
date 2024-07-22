@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="content mt-4">
+    <div class="table-container"> <!-- Contenedor para la tabla con scrollbar -->
+      <table class="table table-hover">
+        <thead class="bg-secondary">
+        <tr class="table-active">
+          <th scope="col">Id</th>
+          <th scope="col">Authority Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">Priority</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let authority of authorities" (click)="isAuthoritySelected(authority)"
+            (dblclick)="disableRoleSelected()">
+          <th scope="row">{{ authority.id }}</th>
+          <td>{{ authority.name }}</td>
+          <td>{{ authority.status }}</td>
+          <td>{{ authority.priority }}</td>
+          <td><i (click)="loadAuthorityEditComponent(authority.id, $event)" class="bi bi-pencil-square text-info"></i></td>
+          <td><i (click)="deleteAuthority(authority.id)" class="bi bi-trash text-info"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

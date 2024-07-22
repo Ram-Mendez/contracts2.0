@@ -13,9 +13,12 @@ import {InventoryAddComponent} from "./contratos/contratos-inventory/inventory-a
 import {InventoryListComponent} from "./contratos/contratos-inventory/inventory-list/inventory-list.component";
 import {InventoryEditComponent} from "./contratos/contratos-inventory/inventory-edit/inventory-edit.component";
 import {ContratosFileManagerComponent} from "./contratos/contratos-file-manager/contratos-file-manager.component";
+import {UsersComponent} from "./common/header/components/administration/users/users.component";
+import {RolesComponent} from "./common/header/components/administration/roles/roles.component";
+import {AuthoritiesComponent} from "./common/header/components/administration/authorities/authorities.component";
+import {ContractorsComponent} from "./common/header/components/administration/contractors/contractors.component";
 
 export const routes: Routes = [
-    // router-outlet de app-component carga estas rutas
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
@@ -34,10 +37,16 @@ export const routes: Routes = [
             {path: 'files', component: ContratosFileManagerComponent},
 
           ]
-        }, // Ruta modificada para incluir :id
-        {path: 'administration', component: AdministrationComponent},
+        },
+        {
+          path: 'administration', component: AdministrationComponent, children: [
+            {path: 'users', component: UsersComponent},
+            {path: 'roles', component: RolesComponent},
+            {path: 'authorities', component: AuthoritiesComponent},
+            {path: 'contractors', component: ContractorsComponent}
+          ]
+        },
       ],
-      // path: 'home/contracts/'
     },
     {path: '**', redirectTo: 'home'}
   ]

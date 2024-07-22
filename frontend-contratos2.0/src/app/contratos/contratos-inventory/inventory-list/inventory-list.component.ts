@@ -68,7 +68,7 @@ export class InventoryListComponent implements OnInit {
   }
 
   deleteInventoryItem(inventoryId: number) {
-    this.contratosInventoryService.deleteInventoryItem(this.contratoId, this.inventoryId)
+    this.contratosInventoryService.deleteInventoryItem(this.contratoId, inventoryId)
       .subscribe(() => {
         this.getAllInventory();
         this.disableInventorySelected();

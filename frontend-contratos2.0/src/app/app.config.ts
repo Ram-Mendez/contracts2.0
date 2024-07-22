@@ -4,7 +4,7 @@ import {provideRouter} from '@angular/router';
 import {routes} from './app.routes';
 import {HttpClientModule, provideHttpClient} from "@angular/common/http";
 import {provideAnimations} from "@angular/platform-browser/animations";
-import {ContractorsService} from "./contratos/service/contractors.service";
+import {ContractorsService} from "./common/header/components/administration/service/contractors.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({eventCoalescing: true}),

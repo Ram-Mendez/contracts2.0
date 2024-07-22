@@ -10,13 +10,11 @@
   float: left;
   padding: 10px;
   justify-content: center;
-  border: 1px solid red;
   height: 88.5vh;
 }
 
 .column-two {
   float: left;
-  border: 1px solid red;
 }
 
 .container {
@@ -27,7 +25,6 @@
   min-height: 80vh; /* Altura mínima del 80% del viewport */
   max-width: 600px; /* Ancho máximo para pantallas grandes */
   padding: 20px; /* Añade un poco de padding para mejorar la apariencia */
-  border: 1px solid red;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra para mejor apariencia */
   margin: auto; /* Centra el contenedor verticalmente */
