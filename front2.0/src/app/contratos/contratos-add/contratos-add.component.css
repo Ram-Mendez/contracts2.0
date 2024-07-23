@@ -1,0 +1,33 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Color de fondo ligero para diferenciar */
+  overflow: hidden; /* Evita el desplazamiento cuando se hace zoom */
+}
+
+.card {
+  width: 100%;
+  max-width: 600px; /* Se mantiene el ancho máximo como está */
+  margin: auto; /* Centra el formulario horizontalmente */
+  padding: 1rem; /* Espaciado interno del formulario */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para el efecto de tarjeta */
+  background-color: #fff; /* Color de fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+h2 {
+  text-align: center; /* Centra el título */
+  margin-bottom: 1rem; /* Margen inferior del título */
+}
+
+.grid {
+  width: 100%; /* Asegura que la grid ocupe todo el ancho disponible */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Evita el desplazamiento de la grid */
+}

@@ -26,12 +26,12 @@ public class AuthorityController {
     }
 
     @GetMapping("/authorities")
-    public List<AuthorityEntity> getContractors() {
+    public List<AuthorityEntity> getAuthorities() {
         return authorityRepository.findAll();
     }
 
     @GetMapping("/authorities/{id}")
-    public AuthorityEntity getContractorById(@PathVariable Integer id) {
+    public AuthorityEntity getAuthorityById(@PathVariable Integer id) {
         return authorityRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Authority not found" + id));
     }
 }

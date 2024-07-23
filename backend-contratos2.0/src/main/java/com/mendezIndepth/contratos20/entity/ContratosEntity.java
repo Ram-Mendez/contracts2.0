@@ -2,9 +2,10 @@ package com.mendezIndepth.contratos20.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
-import java.util.*;
 
 @Entity
 @Table(name = "contract_entity")
@@ -20,9 +21,10 @@ public class ContratosEntity {
     @ManyToOne
     @JoinColumn(name = "contractor_id")
     private ContractorEntity contractor;
-    @ManyToOne
-    @JoinColumn(name = "authority_id")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "authority_id", nullable = true)
     private AuthorityEntity authority;
     private LocalDate startDate;
+    private LocalDate endDate;
 
 }

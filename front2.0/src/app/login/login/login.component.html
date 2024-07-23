@@ -1,0 +1,28 @@
+<!-- login.component.html -->
+<div class="login-container">
+  <div class="container">
+    <p-card styleClass="ui-card-shadow">
+      <h2 class="header">Welcome</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="p-fluid">
+          <div class="p-field">
+            <p-floatLabel>
+              <input id="email" type="text" pInputText formControlName="email"/>
+              <label for="email">Email</label>
+            </p-floatLabel>
+          </div>
+          <div class="p-field">
+            <p-floatLabel>
+              <input id="password" type="password" pInputText formControlName="password"/>
+              <label for="password">Password</label>
+            </p-floatLabel>
+          </div>
+          <div class="button">
+            <p-button type="submit" label="Login" [disabled]="loginForm.invalid"></p-button>
+          </div>
+        </div>
+      </form>
+      <a class="center" routerLink="/register">Don't have an account?</a>
+    </p-card>
+  </div>
+</div>

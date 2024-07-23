@@ -13,6 +13,7 @@ public class ContractDto {
     private Integer contractorId;
     private Integer authorityId;
     private LocalDate startDate;
+    private LocalDate endDate;
 
 
 }

@@ -1,0 +1,13 @@
+.buttons {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones se ajusten y envuelvan en la línea siguiente si no hay espacio suficiente */
+  gap: 10px; /* Espacio entre botones */
+}
+
+/* Media query para pantallas de hasta 600px de ancho */
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column; /* Cambia la disposición de los botones a vertical */
+    align-items: center; /* Centra los botones verticalmente */
+  }
+}

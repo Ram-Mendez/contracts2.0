@@ -1,0 +1,40 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; /* Asegura que el body y html ocupen toda la altura */
+  overflow-x: hidden; /* Evita el scroll horizontal */
+  background-color: lightblue; /* Cambia el color de fondo del body y html */
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinea el contenedor al inicio (parte superior) */
+  min-height: 100vh; /* Asegura que el contenedor ocupe al menos toda la altura de la vista */
+  padding: 20px; /* Opcional, agrega algo de espacio alrededor del contenedor */
+  background-color: lightblue; /* Cambia el color del contenedor */
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.header {
+  text-align: center; /* Centra el texto horizontalmente */
+  margin-top: -20px; /* Elimina el espacio superior */
+}
+
+.p-field {
+  margin-bottom: 1.5rem; /* Espacio entre los inputs */
+}
+
+.button {
+  margin-top: 1.5rem; /* Espacio entre los inputs y el botón */
+}
+
+.center {
+  display: block;
+  text-align: center;
+  margin-top: 1rem; /* Espacio entre el botón y el enlace */
+}
