@@ -36,18 +36,28 @@ public class ContratosController {
 
     @PostMapping("/contracts")
     public ContratosEntity createContract(@RequestBody ContractDto contractDto) {
+        if (contractDto.getAuthorityId() == null) {
+            throw new IllegalArgumentException("Authority ID must not be null");
+        }
+        if (contractDto.getContractorId() == null) {
+            throw new IllegalArgumentException("Contractor ID must not be null");
+        }
+
         AuthorityEntity authority = authorityRepository.findById(contractDto.getAuthorityId())
-                .orElseThrow(() -> new NoSuchElementException("Authority not found" + contractDto.getAuthorityId()));
+                .orElseThrow(() -> new NoSuchElementException("Authority not found: " + contractDto.getAuthorityId()));
         ContractorEntity contractor = contractorRepository.findById(contractDto.getContractorId())
-                .orElseThrow(() -> new NoSuchElementException("Contractor not found" + contractDto.getContractorId()));
+                .orElseThrow(() -> new NoSuchElementException("Contractor not found: " + contractDto.getContractorId()));
+
         ContratosEntity contract = new ContratosEntity();
         contract.setName(contractDto.getName());
         contract.setAuthority(authority);
         contract.setContractor(contractor);
-        contract.setStartDate(LocalDate.now());
+        contract.setStartDate(contractDto.getStartDate());
+        contract.setEndDate(contractDto.getEndDate());
 
         return contractRepository.save(contract);
     }
+
 
     @PutMapping("/contracts/{id}")
     public ContratosEntity updateContract(@PathVariable Integer id, @RequestBody ContractDto contractDto) {
@@ -60,6 +70,7 @@ public class ContratosController {
         contract.setName(contractDto.getName());
         contract.setAuthority(authority);
         contract.setContractor(contractor);
+        contract.setEndDate(contractDto.getEndDate());
         return contractRepository.save(contract);
     }
 

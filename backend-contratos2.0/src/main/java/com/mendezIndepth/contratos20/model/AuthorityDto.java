@@ -10,4 +10,6 @@ public class AuthorityDto {
     private int id;
     private String name;
     private int contractId;
+    private String status;
+    private String priority;
 }

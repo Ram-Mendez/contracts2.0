@@ -1,3 +1,7 @@
+-- Table for storing authorities
+
+
+
 CREATE TABLE `authority_entity`
 (
     `id`   int NOT NULL AUTO_INCREMENT,
@@ -10,6 +14,7 @@ CREATE TABLE `authority_entity`
     DEFAULT CHARSET=utf8mb4
     COLLATE=utf8mb4_0900_ai_ci
 
+-- Table for storing contact us messages
 CREATE TABLE `contact_us_entity`
 (
     `id`      int NOT NULL AUTO_INCREMENT,
@@ -19,7 +24,7 @@ CREATE TABLE `contact_us_entity`
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-
+-- Table for storing contracts
 CREATE TABLE `contract_entity`
 (
     `id`            int NOT NULL AUTO_INCREMENT,
@@ -32,8 +37,10 @@ CREATE TABLE `contract_entity`
     KEY             `FKsp5rcoqem1jwj98fioc142vis` (`contractor_id`),
     CONSTRAINT `FK6mr13ty9l2a19lcoxfgvmtpf2` FOREIGN KEY (`authority_id`) REFERENCES `authority_entity` (`id`),
     CONSTRAINT `FKsp5rcoqem1jwj98fioc142vis` FOREIGN KEY (`contractor_id`) REFERENCES `contractor_entity` (`id`)
+
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+-- Table for storing contracting entities
 CREATE TABLE `contractor_entity`
 (
     `id`   int NOT NULL AUTO_INCREMENT,
@@ -41,6 +48,7 @@ CREATE TABLE `contractor_entity`
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+-- Table for storing users
 CREATE TABLE `user_entity`
 (
     `id`       int NOT NULL AUTO_INCREMENT,

@@ -20,14 +20,19 @@ public class LoginController {
         this.userService = userService;
     }
 
-    @PostMapping("/login")
-    public UserEntity login(@RequestBody UserDto loginUser) {
-        UserEntity user = userService.findByEmail(loginUser.getEmail());
-        if (user != null && user.getPassword().equals(loginUser.getPassword())) {
-            return user;
-        } else {
-            return null;
-        }
-
+    @PostMapping("/register")
+    public UserEntity createUser(@RequestBody UserDto user) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setEmail(user.getEmail());
+        userEntity.setPassword(user.getPassword());
+        return userService.saveUser(userEntity);
     }
+
+
+    @PostMapping("/login")
+    public boolean login(@RequestBody UserDto loginUser) {
+        UserEntity userEntity = userService.findByEmail(loginUser.getEmail());
+        return userEntity != null && userEntity.getPassword().equals(loginUser.getPassword());
+    }
+
 }

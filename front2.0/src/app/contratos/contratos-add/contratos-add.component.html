@@ -1,0 +1,38 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="card">
+      <h2>New Contract</h2>
+      <form [formGroup]="createContratoForm" (ngSubmit)="createContrato()">
+        <div class="p-fluid grid formgrid">
+          <div class="field col-12">
+            <label for="name">Name</label>
+            <input id="name" type="text" pInputText formControlName="name">
+          </div>
+          <div class="field col-12">
+            <label for="startDate">Starting Date</label>
+            <p-calendar id="startDate" formControlName="startDate" dateFormat="yy-mm-dd" showIcon></p-calendar>
+          </div>
+          <div class="field col-12">
+            <label for="endDate">End Date</label>
+            <p-calendar id="endDate" formControlName="endDate" dateFormat="yy-mm-dd" showIcon></p-calendar>
+          </div>
+          <div class="field col-12">
+            <label for="authorityId">Authority In Charge</label>
+            <p-dropdown id="authorityId" [options]="authorities" optionLabel="name" optionValue="id"
+                        formControlName="authorityId"></p-dropdown>
+          </div>
+          <div class="field col-12">
+            <label for="contractorId">Contractor Name</label>
+            <p-dropdown id="contractorId" [options]="contractors" optionLabel="name" optionValue="id"
+                        formControlName="contractorId"></p-dropdown>
+          </div>
+          <div class="col-12">
+            <p-button label="Create Contract" icon="pi pi-save" type="submit"></p-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,41 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que el contenedor principal tenga al menos el alto de la ventana */
+  height: 100%;
+}
+
+.header {
+  flex-shrink: 0; /* Asegura que el header no se reduzca */
+}
+
+.body {
+  flex: 1; /* Permite que el cuerpo crezca y ocupe el espacio disponible */
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  color: black;
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+  margin-top: auto; /* Empuja el footer al final del contenedor */
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 0.5rem 0;
+  }
+}
