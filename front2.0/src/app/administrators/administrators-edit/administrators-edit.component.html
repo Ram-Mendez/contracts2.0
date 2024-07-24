@@ -1,0 +1,29 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="card">
+      <h2>Edit Administrator</h2>
+      <form [formGroup]="editAdministratorForm" (ngSubmit)="updateAdministrator()">
+        <div class="p-fluid grid formgrid">
+          <div class="field col-12">
+            <label for="contrato">Contracts</label>
+            <p-dropdown id="contrato" [options]="contratos" optionLabel="name" optionValue="id"
+                        formControlName="contrato"></p-dropdown>
+          </div>
+          <div class="field col-12">
+            <label for="user">Authorities</label>
+            <p-dropdown id="user" [options]="authorities" optionLabel="name" optionValue="id"
+                        formControlName="user"></p-dropdown>
+          </div>
+          <div class="field col-12">
+            <label for="authority">Users</label>
+            <p-dropdown id="authority" [options]="users" optionLabel="firstName" optionValue="id"
+                        formControlName="authority"></p-dropdown>
+          </div>
+          <div class="field col-12">
+            <p-button label="Save Changes" icon="pi pi-save" type="submit"></p-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

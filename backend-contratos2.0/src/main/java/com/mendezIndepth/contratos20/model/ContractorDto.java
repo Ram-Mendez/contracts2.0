@@ -10,4 +10,8 @@ public class ContractorDto {
     private int id;
     private String name;
     private int contractId;
+    private String phoneNumber;
+    private String company;
+    private String status;
+
 }

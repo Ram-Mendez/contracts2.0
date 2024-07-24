@@ -43,8 +43,9 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       this.loginService.login(this.loginForm.value).subscribe(
-        res => {
-          console.log(res);
+        userLogged => {
+          this.loginService.setEmailForUserLogged(userLogged.email)
+          console.log(userLogged);
           this.messageService.add({
             severity: 'success',
             detail: 'User logged in',

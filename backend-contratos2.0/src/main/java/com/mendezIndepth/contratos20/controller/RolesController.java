@@ -3,10 +3,7 @@ package com.mendezIndepth.contratos20.controller;
 import com.mendezIndepth.contratos20.entity.RolesEntity;
 import com.mendezIndepth.contratos20.repository.RolesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -31,5 +28,11 @@ public class RolesController {
         rolesRepository.findAll().forEach(rolesList::add);
         return rolesList;
     }
+
+    @DeleteMapping("/roles/{id}")
+    public void deleteRole(@PathVariable Integer id) {
+        rolesRepository.deleteById(id);
+    }
+
 
 }

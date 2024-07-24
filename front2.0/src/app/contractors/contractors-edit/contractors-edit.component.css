@@ -1,0 +1,48 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.card {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-fluid .formgrid .field {
+  margin-bottom: 1rem;
+}
+
+.p-calendar {
+  width: 100%;
+}
+
+.p-dropdown {
+  width: 100%;
+}
+
+.p-button {
+  width: 100%;
+}

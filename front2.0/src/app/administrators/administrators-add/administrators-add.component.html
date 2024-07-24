@@ -1,0 +1,31 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="card">
+      <h2>New Contractor</h2>
+      <form [formGroup]="administratorForm" (ngSubmit)="createAdministrator()">
+        <div class="p-fluid grid formgrid">
+          <div class="field col-12">
+            <label for="user">Users</label>
+            <p-dropdown id="user" [options]="users" optionLabel="firstName" optionValue="id"
+                        formControlName="user"></p-dropdown>
+          </div>
+          <div class="field col-12">
+            <label for="authority">Authorities</label>
+            <p-dropdown id="authority" [options]="authorities" optionLabel="name" optionValue="id"
+                        formControlName="authority"></p-dropdown>
+          </div>
+          <div class="field col-12">
+            <label for="contrato">Contracts</label>
+            <p-dropdown id="contrato" [options]="contratos" optionLabel="name" optionValue="id"
+                        formControlName="contrato"></p-dropdown>
+          </div>
+          <div class="field col-12">
+            <p-button label="Create Contractor" icon="pi pi-save" type="submit"></p-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

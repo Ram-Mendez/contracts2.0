@@ -43,7 +43,14 @@ public class UserController {
         user.setLastName(newUser.getLastName());
         user.setEmail(newUser.getEmail());
         user.setPhoneNumber(newUser.getPhoneNumber());
-        user.setRoles(new HashSet<>());
+
+        Set<RolesEntity> roles = new HashSet<>();
+        newUser.getRoles().forEach((roleId) -> {
+            RolesEntity role = rolesRepository.findById(roleId).orElseThrow(() -> new RuntimeException("Role not found"));
+            roles.add(role);
+        });
+
+        user.setRoles(roles);
         user.setPassword(newUser.getPassword());
 
         UserEntity savedUser = userService.saveUser(user);
@@ -70,5 +77,10 @@ public class UserController {
 
         UserEntity updatedUser = userService.saveUser(user);
         return ResponseEntity.ok(updatedUser);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable Integer id) {
+        userService.deleteUser(id);
     }
 }

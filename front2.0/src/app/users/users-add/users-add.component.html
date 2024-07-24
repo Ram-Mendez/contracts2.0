@@ -1,0 +1,35 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="card">
+      <h2>New User</h2>
+      <form [formGroup]="userForm" (ngSubmit)="createUser()">
+        <div class="p-fluid grid formgrid">
+          <div class="field col-12">
+            <label for="firstName">First Name</label>
+            <input id="firstName" type="text" pInputText formControlName="firstName">
+          </div>
+          <div class="field col-12">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" type="text" pInputText formControlName="lastName">
+          </div>
+          <div class="field col-12">
+            <label for="email">Email</label>
+            <input id="email" type="text" pInputText formControlName="email">
+          </div>
+          <div class="field col-12">
+            <label for="phoneNumber">Phone Number</label>
+            <input id="phoneNumber" type="text" pInputText formControlName="phoneNumber">
+          </div>
+          <div class="field col-12">
+            <label for="roles">Roles</label>
+            <p-multiSelect id="roles" [options]="roles" optionLabel="name" optionValue="id"
+                           formControlName="roles"></p-multiSelect>
+          </div>
+          <div class="field col-12">
+            <p-button label="Create User" icon="pi pi-save" type="submit"></p-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

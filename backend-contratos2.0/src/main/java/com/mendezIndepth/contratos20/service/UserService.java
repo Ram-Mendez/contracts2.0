@@ -16,4 +16,6 @@ public interface UserService {
     void deleteUser(Integer id);
 
     UserEntity findByEmail(String email);
+
+    
 }

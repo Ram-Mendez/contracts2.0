@@ -1,0 +1,22 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="card">
+      <h2>New Role</h2>
+      <form [formGroup]="roleForm" (ngSubmit)="createRole()">
+        <div class="p-fluid grid formgrid">
+          <div class="field col-12">
+            <label for="name">Role Name</label>
+            <input id="name" type="text" pInputText formControlName="name">
+          </div>
+          <div class="field col-12">
+            <label for="description">Role Description</label>
+            <input id="description" type="text" pInputText formControlName="description">
+          </div>
+          <div class="field col-12">
+            <p-button label="Create Role" icon="pi pi-save" type="submit"></p-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

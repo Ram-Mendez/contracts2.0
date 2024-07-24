@@ -13,4 +13,14 @@ public class ContractorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    private String company;
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public enum Status {
+        ACTIVE,
+        INACTIVE
+    }
 }

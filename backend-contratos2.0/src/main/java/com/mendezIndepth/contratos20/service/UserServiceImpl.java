@@ -1,6 +1,7 @@
 package com.mendezIndepth.contratos20.service;
 
 import com.mendezIndepth.contratos20.entity.UserEntity;
+import com.mendezIndepth.contratos20.repository.RolesRepository;
 import com.mendezIndepth.contratos20.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,12 @@ import java.util.*;
 @Service
 public class UserServiceImpl implements UserService {
     UserRepository userRepository;
+    RolesRepository rolesRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, RolesRepository rolesRepository) {
         this.userRepository = userRepository;
+        this.rolesRepository = rolesRepository;
     }
 
     @Override

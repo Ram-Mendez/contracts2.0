@@ -1,1 +1,34 @@
-<p>authorities-list works!</p>
+<div class="grid">
+  <div class="col-12">
+    <div class="buttons">
+      <p-button (click)="addAuthority()" label="New Authority" icon="pi pi-plus"></p-button>
+      <p-button  (click)="editAuthority()" [disabled]="!isAuthoritySelected" label="Edit Authority" icon="pi pi-plus"></p-button>
+      <p-button  (click)="deleteAuthority()" [disabled]="!isAuthoritySelected" label="Delete Authority" icon="pi pi-plus"></p-button>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="card">
+      <p-table [value]="authorities" selectionMode="single" (onRowSelect)="onRowSelect($event)"
+               (onRowUnselect)="onRowUnselect($event)" [tableStyle]="{ 'min-width': '50rem' }"
+               [metaKeySelection]="false" dataKey="id">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Id</th>
+            <th>Authority Name</th>
+            <th>Status</th>
+            <th>Priority</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-authority>
+          <tr [pSelectableRow]="authority">
+            <td>{{ authority.id }}</td>
+            <td>{{ authority.name }}</td>
+            <td>{{ authority.status }}</td>
+            <td>{{ authority.priority }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+    </div>
+  </div>
+</div>

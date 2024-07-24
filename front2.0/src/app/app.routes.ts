@@ -6,6 +6,21 @@ import {confirmLoginGuard} from "./login/login/service/confirm-login.guard";
 import {ContratosListComponent} from "./contratos/contratos-list/contratos-list.component";
 import {ContratosAddComponent} from "./contratos/contratos-add/contratos-add.component";
 import {ContratosEditComponent} from "./contratos/contratos-edit/contratos-edit.component";
+import {UsersListComponent} from "./users/users/users-list.component";
+import {ManagementComponent} from "./management/management/management.component";
+import {AuthoritiesListComponent} from "./authorities/authorities-list/authorities-list.component";
+import {AuthoritiesAddComponent} from "./authorities/authorities-add/authorities-add.component";
+import {AuthoritiesEditComponent} from "./authorities/authorities-edit/authorities-edit.component";
+import {ContractorListComponent} from "./contractors/contractor-list/contractor-list.component";
+import {ContractorsAddComponent} from "./contractors/contractors-add/contractors-add.component";
+import {ContractorsEditComponent} from "./contractors/contractors-edit/contractors-edit.component";
+import {RolesComponent} from "./roles/roles/roles.component";
+import {RolesAddComponent} from "./roles/roles-add/roles-add.component";
+import {UsersAddComponent} from "./users/users-add/users-add.component";
+import {UsersEditComponent} from "./users/users-edit/users-edit.component";
+import {AdministratorsListComponent} from "./administrators/administrators-list/administrators-list.component";
+import {AdministratorsAddComponent} from "./administrators/administrators-add/administrators-add.component";
+import {AdministratorsEditComponent} from "./administrators/administrators-edit/administrators-edit.component";
 
 
 export const routes: Routes = [
@@ -22,6 +37,22 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'management', component: HomeComponent, canActivate: [confirmLoginGuard],
+    path: 'management', component: ManagementComponent, canActivate: [confirmLoginGuard],
+    children: [
+      {path: 'authorities', component: AuthoritiesListComponent, canActivate: [confirmLoginGuard]},
+      {path: 'add-authority', component: AuthoritiesAddComponent, canActivate: [confirmLoginGuard]},
+      {path: 'edit-authority/:id', component: AuthoritiesEditComponent, canActivate: [confirmLoginGuard]},
+      {path: 'contractors', component: ContractorListComponent, canActivate: [confirmLoginGuard]},
+      {path: 'add-contractor', component: ContractorsAddComponent, canActivate: [confirmLoginGuard]},
+      {path: 'edit-contractor/:id', component: ContractorsEditComponent, canActivate: [confirmLoginGuard]},
+      {path: 'roles', component: RolesComponent, canActivate: [confirmLoginGuard]},
+      {path: 'roles-add', component: RolesAddComponent, canActivate: [confirmLoginGuard]},
+      {path: 'users', component: UsersListComponent, canActivate: [confirmLoginGuard]},
+      {path: 'users-add', component: UsersAddComponent, canActivate: [confirmLoginGuard]},
+      {path: 'users-edit/:id', component: UsersEditComponent, canActivate: [confirmLoginGuard]},
+      {path: 'administrators', component: AdministratorsListComponent, canActivate: [confirmLoginGuard]},
+      {path: 'administrators-add', component: AdministratorsAddComponent, canActivate: [confirmLoginGuard]},
+      {path: 'administrators-edit/:id', component: AdministratorsEditComponent, canActivate: [confirmLoginGuard]},
+    ]
   }
 ];

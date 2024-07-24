@@ -32,7 +32,24 @@ public class AuthorityController {
 
     @GetMapping("/authorities/{id}")
     public AuthorityEntity getAuthorityById(@PathVariable Integer id) {
-        return authorityRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Authority not found" + id));
+        return authorityRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Authority not found" + id));
+    }
+
+    @PutMapping("/authorities/{id}")
+    public AuthorityEntity updateAuthority(@PathVariable Integer id, @RequestBody AuthorityDto authorityDto) {
+        AuthorityEntity authority = authorityRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Authority not found" + id));
+        authority.setName(authorityDto.getName());
+        authority.setStatus(authorityDto.getStatus());
+        authority.setPriority(authorityDto.getPriority());
+        return authorityRepository.save(authority);
+
+    }
+
+    @DeleteMapping("/authorities/{id}")
+    public void deleteAuthority(@PathVariable Integer id) {
+        authorityRepository.deleteById(id);
     }
 }
 

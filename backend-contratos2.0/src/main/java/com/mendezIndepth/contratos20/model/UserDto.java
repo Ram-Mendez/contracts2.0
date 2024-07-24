@@ -15,7 +15,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Set<Integer> roles = new HashSet<>();
+    private Set<Integer> roles ;
 
 
 }
