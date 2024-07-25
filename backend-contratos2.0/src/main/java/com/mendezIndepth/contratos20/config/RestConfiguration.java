@@ -25,6 +25,4 @@ public class RestConfiguration {
         bean.setOrder(0);
         return bean;
     }
-
-
 }

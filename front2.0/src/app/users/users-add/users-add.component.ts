@@ -40,8 +40,6 @@ export class UsersAddComponent implements OnInit {
   ngOnInit() {
     this.getRoles();
     this.getEmailForUserLogged();
-    this.userForm.get('email')?.patchValue(this.emailForUserLogged)
-    this.userForm.get('email')?.disable();
   }
 
   getEmailForUserLogged() {
@@ -53,7 +51,7 @@ export class UsersAddComponent implements OnInit {
     lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     phoneNumber: ['', Validators.required],
-    roles: [[], Validators.required]
+    roles: ['', Validators.required]
   });
 
   getRoles() {

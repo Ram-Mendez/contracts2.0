@@ -28,8 +28,8 @@ export class ContratosService {
     return this.http.put(this.contratosUrl + '/' + id, contrato);
   }
 
-  deleteContrato(id: number): Observable<any> {
-    return this.http.delete(this.contratosUrl + '/' + id);
+  deleteContrato(id: number): Observable<void> {
+    return this.http.delete<void>(this.contratosUrl + '/' + id);
   }
 
   // end of CRUD operations

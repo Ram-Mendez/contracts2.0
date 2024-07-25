@@ -25,8 +25,8 @@ export class AdministratorService {
 
   }
 
-  updateAdministrator(administrator: Administrator): Observable<Administrator> {
-    return this.http.put<Administrator>(this.administratorUrl, administrator);
+  updateAdministrator(id: number, administrator: Administrator): Observable<Administrator> {
+    return this.http.put<Administrator>(this.administratorUrl + '/' + id, administrator);
   }
 
   deleteAdministrator(id: number): Observable<any> {

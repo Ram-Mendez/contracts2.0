@@ -5,6 +5,16 @@
       <form [formGroup]="editAdministratorForm" (ngSubmit)="updateAdministrator()">
         <div class="p-fluid grid formgrid">
           <div class="field col-12">
+            <label for="email">Administrator Email</label>
+            <input id="email" type="email" pInputText formControlName="email">
+          </div>
+          <div class="field col-12">
+            <label for="roles">Roles</label>
+            <p-dropdown id="roles" [options]="roleAdmin" optionLabel="name" optionValue="id"
+                        formControlName="roles"></p-dropdown>
+          </div>
+
+          <div class="field col-12">
             <label for="contrato">Contracts</label>
             <p-dropdown id="contrato" [options]="contratos" optionLabel="name" optionValue="id"
                         formControlName="contrato"></p-dropdown>

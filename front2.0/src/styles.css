@@ -31,7 +31,8 @@ body, html {
 .p-tree {
   border: none;
 }
-.p-treenode-content:hover{
+
+.p-treenode-content:hover {
   background-color: whitesmoke;
 }
 
@@ -44,4 +45,14 @@ body, html {
   white-space: nowrap; /* Evita que el contenido se desborde en la siguiente línea */
   overflow: hidden; /* Oculta cualquier desbordamiento de texto */
   text-overflow: ellipsis; /* Añade "..." si el texto es demasiado largo */
+}
+
+.p-dropdown-panel {
+  position: absolute;
+  bottom: 100%;
+  transform: translateY(-8px); /* Opcional: Añade un pequeño espacio entre el input y el panel */
+}
+
+.p-dropdown {
+  position: relative;
 }

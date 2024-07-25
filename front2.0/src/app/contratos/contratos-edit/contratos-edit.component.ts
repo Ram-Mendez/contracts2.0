@@ -1,13 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthoritiesService} from "../../authorities/authorities.service";
 import {ContractorsService} from "../../contractors/service/contractors.service";
-import {MessageService} from "primeng/api";
-import {ActivatedRoute, Router} from "@angular/router";
+import {MessageService, TreeNode} from "primeng/api";
+import {ActivatedRoute, Router, RouterLink, RouterOutlet} from "@angular/router";
 import {ContratosService} from "../service/contratos.service";
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CalendarModule} from "primeng/calendar";
 import {DropdownModule} from "primeng/dropdown";
 import {ChipsModule} from "primeng/chips";
+import {FooterComponent} from "../../common/footer/footer.component";
+import {HeaderComponent} from "../../common/header/header.component";
+import {TreeModule} from "primeng/tree";
 
 @Component({
   selector: 'app-contratos-edit',
@@ -16,7 +19,12 @@ import {ChipsModule} from "primeng/chips";
     ReactiveFormsModule,
     CalendarModule,
     DropdownModule,
-    ChipsModule
+    ChipsModule,
+    FooterComponent,
+    HeaderComponent,
+    RouterOutlet,
+    TreeModule,
+    RouterLink,
   ],
   templateUrl: './contratos-edit.component.html',
   styleUrl: './contratos-edit.component.css'
@@ -57,6 +65,8 @@ export class ContratosEditComponent implements OnInit {
   }
 
 
+
+
   updateContract() {
     if (this.editContractForm.valid) {
       this.contratoService.updateContrato(this.contratoId, this.editContractForm.value).subscribe(
@@ -92,4 +102,6 @@ export class ContratosEditComponent implements OnInit {
         this.contractors = res;
       });
   }
+
+
 }

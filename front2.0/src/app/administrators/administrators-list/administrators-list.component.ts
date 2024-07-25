@@ -5,9 +5,7 @@ import {TableModule} from "primeng/table";
 import {Router} from "@angular/router";
 import {Administrator} from "../service/administrator";
 import {AdministratorService} from "../service/administrator.service";
-import {UsersService} from "../../users/service/users.service";
-import {AuthoritiesService} from "../../authorities/authorities.service";
-import {ContratosService} from "../../contratos/service/contratos.service";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-administrators',
@@ -15,7 +13,8 @@ import {ContratosService} from "../../contratos/service/contratos.service";
   imports: [
     Button,
     PrimeTemplate,
-    TableModule
+    TableModule,
+    NgForOf
   ],
   templateUrl: './administrators-list.component.html',
   styleUrl: './administrators-list.component.css'
@@ -57,6 +56,7 @@ export class AdministratorsListComponent implements OnInit {
         this.messageService.add({
           severity: 'success', detail: 'Administrator deleted', icon: 'pi pi-check'
         });
+        this.getAdministrators();
       }
     )
   }

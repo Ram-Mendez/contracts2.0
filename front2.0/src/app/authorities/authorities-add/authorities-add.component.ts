@@ -73,7 +73,7 @@ export class AuthoritiesAddComponent implements OnInit {
             detail: 'Authority created successfully.',
             icon: 'pi pi-check'
           });
-          this.router.navigate(['/management']);
+          this.router.navigate(['/management/authorities']);
         },
         err => {
           this.messageService.add({

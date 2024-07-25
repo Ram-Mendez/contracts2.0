@@ -24,7 +24,7 @@ public class FileUploadEntity implements Serializable {
     @Lob
     @Column(columnDefinition = "LONGTEXT")
     private String file;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "contract_id")
     private ContratosEntity contrato;
 

@@ -22,6 +22,8 @@
         <ng-template pTemplate="header">
           <tr>
             <th>Id</th>
+            <th>Email</th>
+            <th>Roles</th>
             <th>User Name</th>
             <th>Authority Name</th>
             <th>Contract Name</th>
@@ -30,9 +32,11 @@
         <ng-template pTemplate="body" let-administrator>
           <tr [pSelectableRow]="administrator">
             <td>{{ administrator.id }}</td>
+            <td>{{ administrator.email }}</td>
+            <td>{{ administrator.roles?.name }}</td>
             <td>{{ administrator.user?.firstName }}</td>
             <td>{{ administrator.authority?.name }}</td>
-            <td>{{ administrator.contracts?.name }}</td>
+            <td>{{ administrator.contratos?.name }}</td>
           </tr>
         </ng-template>
       </p-table>

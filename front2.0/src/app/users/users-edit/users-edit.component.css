@@ -5,7 +5,6 @@ body, html {
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
-  overflow: hidden;
 }
 
 .card {
@@ -39,9 +38,7 @@ h2 {
   width: 100%;
 }
 
-.p-dropdown {
-  width: 100%;
-}
+
 
 .p-button {
   width: 100%;

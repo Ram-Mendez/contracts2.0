@@ -28,7 +28,7 @@ public class ContratosInventory {
     private BigDecimal unitPrice;
     @Column(name = "total_value")
     private BigDecimal totalValue;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "contrato_id")
     private ContratosEntity contrato;
 

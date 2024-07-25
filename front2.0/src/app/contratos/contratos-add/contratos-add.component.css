@@ -29,5 +29,4 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Evita el desplazamiento de la grid */
 }

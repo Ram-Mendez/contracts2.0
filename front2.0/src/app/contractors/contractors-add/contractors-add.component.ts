@@ -40,8 +40,8 @@ export class ContractorsAddComponent implements OnInit {
   });
 
   status = [
-    {label: 'ACTIVE', value: 'ACTIVE'},
-    {label: 'INACTIVE', value: 'INACTIVE'}
+    {label: 'ACTIVE', value: '1'},
+    {label: 'INACTIVE', value: '2'}
   ];
 
   createContractor() {

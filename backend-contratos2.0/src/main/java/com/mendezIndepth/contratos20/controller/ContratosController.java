@@ -1,9 +1,11 @@
 package com.mendezIndepth.contratos20.controller;
 
+import com.mendezIndepth.contratos20.entity.AdministratorEntity;
 import com.mendezIndepth.contratos20.entity.AuthorityEntity;
 import com.mendezIndepth.contratos20.entity.ContractorEntity;
 import com.mendezIndepth.contratos20.entity.ContratosEntity;
 import com.mendezIndepth.contratos20.model.ContractDto;
+import com.mendezIndepth.contratos20.repository.AdministratorRepository;
 import com.mendezIndepth.contratos20.repository.AuthorityRepository;
 import com.mendezIndepth.contratos20.repository.ContractRepository;
 import com.mendezIndepth.contratos20.repository.ContractorRepository;
@@ -23,6 +25,8 @@ public class ContratosController {
     private ContractorRepository contractorRepository;
     @Autowired
     private AuthorityRepository authorityRepository;
+    @Autowired
+    private AdministratorRepository administratorRepository;
 
     @GetMapping("/contracts")
     public List<ContratosEntity> getAllContracts() {
@@ -77,6 +81,16 @@ public class ContratosController {
     @DeleteMapping("/contracts/{id}")
     @Transactional
     public void deleteContract(@PathVariable Integer id) {
+        AdministratorEntity administrator = administratorRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Administrator not found" + id));
+        administratorRepository.delete(administrator);
+        ContractorEntity contractor = contractorRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Contractor not found" + id));
+        contractorRepository.delete(contractor);
+        AuthorityEntity authority = authorityRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Authority not found" + id));
+        authorityRepository.delete(authority);
+
         contractRepository.deleteById(id);
     }
 

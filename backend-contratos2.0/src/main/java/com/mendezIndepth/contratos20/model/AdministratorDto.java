@@ -7,8 +7,10 @@ import lombok.Setter;
 @Setter
 public class AdministratorDto {
     private Integer id;
+    private String email;
     private Integer contrato;
     private Integer authority;
     private Integer user;
+    private Integer roles;
 
 }

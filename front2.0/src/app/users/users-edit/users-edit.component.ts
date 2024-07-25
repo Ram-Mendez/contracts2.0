@@ -62,7 +62,7 @@ export class UsersEditComponent implements OnInit {
           lastName: user.lastName,
           email: user.email,
           phoneNumber: user.phoneNumber,
-          roles: user.roles.map((role: Roles) => role.id) // Assuming roles have an id property
+          roles: user.roles?.name
         });
       },
       err => {

@@ -9,6 +9,7 @@ import {MessageService} from "primeng/api";
 import {ContratosService} from "../../contratos/service/contratos.service";
 import {AuthoritiesService} from "../../authorities/authorities.service";
 import {UsersService} from "../../users/service/users.service";
+import {RolesService} from "../../roles/service/roles.service";
 
 @Component({
   selector: 'app-administrators-edit',
@@ -28,6 +29,7 @@ export class AdministratorsEditComponent implements OnInit {
   contratos: any;
   authorities: any;
   users: any;
+  roleAdmin: any;
 
 
   constructor(private route: ActivatedRoute,
@@ -37,10 +39,13 @@ export class AdministratorsEditComponent implements OnInit {
               private messageService: MessageService,
               private contratoService: ContratosService,
               private authoritiesService: AuthoritiesService,
-              private userService: UsersService) {
+              private userService: UsersService,
+              private rolesService: RolesService) {
   }
 
   editAdministratorForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    roles: [[], Validators.required],
     contrato: ['', Validators.required],
     authority: ['', Validators.required],
     user: ['', Validators.required],
@@ -56,12 +61,28 @@ export class AdministratorsEditComponent implements OnInit {
     this.getContratos();
     this.getAuthorities();
     this.getUsers();
+    this.getAndFilterRoles()
+  }
+
+
+  getAndFilterRoles() {
+    this.rolesService.getRoles().subscribe((roles: any) => {
+      this.roleAdmin = roles.filter((role: any) => role.name === 'ADMIN');
+    });
   }
 
   getAdministratorById() {
     this.administratorService.getAdministratorById(this.administratorId).subscribe(
       (response: any) => {
-        this.editAdministratorForm.patchValue(response);
+        console.log(response, "loaded administrator data here");
+
+        this.editAdministratorForm.patchValue({
+          email: response.email,
+          roles: response.roles?.name,
+          contrato: response.contrato?.name,
+          authority: response.authority?.name,
+          user: response.user?.firstName
+        });
       },
       error => {
         console.error('Error getting administrator by id');
@@ -70,8 +91,8 @@ export class AdministratorsEditComponent implements OnInit {
   }
 
   updateAdministrator() {
-    console.log(this.editAdministratorForm.value)
-    this.administratorService.updateAdministrator(this.editAdministratorForm.value).subscribe(
+    console.log(this.editAdministratorForm.value, "value here")
+    this.administratorService.updateAdministrator(this.administratorId, this.editAdministratorForm.value).subscribe(
       () => {
         this.messageService.add({
           severity: 'success', detail: 'Administrator updated', icon: 'pi pi-check'
@@ -86,21 +107,18 @@ export class AdministratorsEditComponent implements OnInit {
   getContratos() {
     this.contratoService.getContratos().subscribe((contratos: any) => {
       this.contratos = contratos;
-      console.log(this.contratos)
     });
   }
 
   getAuthorities() {
     this.authoritiesService.getAuthorities().subscribe((authorities: any) => {
       this.authorities = authorities;
-      console.log(this.authorities)
     });
   }
 
   getUsers() {
     this.userService.getUsers().subscribe((users: any) => {
       this.users = users;
-      console.log(this.users)
     });
   }
 }

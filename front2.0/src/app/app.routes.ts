@@ -6,7 +6,7 @@ import {confirmLoginGuard} from "./login/login/service/confirm-login.guard";
 import {ContratosListComponent} from "./contratos/contratos-list/contratos-list.component";
 import {ContratosAddComponent} from "./contratos/contratos-add/contratos-add.component";
 import {ContratosEditComponent} from "./contratos/contratos-edit/contratos-edit.component";
-import {UsersListComponent} from "./users/users/users-list.component";
+import {UsersListComponent} from "./users/users-list/users-list.component";
 import {ManagementComponent} from "./management/management/management.component";
 import {AuthoritiesListComponent} from "./authorities/authorities-list/authorities-list.component";
 import {AuthoritiesAddComponent} from "./authorities/authorities-add/authorities-add.component";
@@ -21,6 +21,7 @@ import {UsersEditComponent} from "./users/users-edit/users-edit.component";
 import {AdministratorsListComponent} from "./administrators/administrators-list/administrators-list.component";
 import {AdministratorsAddComponent} from "./administrators/administrators-add/administrators-add.component";
 import {AdministratorsEditComponent} from "./administrators/administrators-edit/administrators-edit.component";
+import {ContratosInventoryComponent} from "./contratos/contract-inventory/contratos-inventory.component";
 
 
 export const routes: Routes = [
@@ -34,6 +35,7 @@ export const routes: Routes = [
       {path: '', component: ContratosListComponent, canActivate: [confirmLoginGuard]},
       {path: 'add-contract', component: ContratosAddComponent, canActivate: [confirmLoginGuard]},
       {path: 'edit-contract/:id', component: ContratosEditComponent, canActivate: [confirmLoginGuard]},
+      {path: 'inventory-contract/:id', component: ContratosInventoryComponent, canActivate: [confirmLoginGuard]},
     ],
   },
   {
@@ -54,5 +56,6 @@ export const routes: Routes = [
       {path: 'administrators-add', component: AdministratorsAddComponent, canActivate: [confirmLoginGuard]},
       {path: 'administrators-edit/:id', component: AdministratorsEditComponent, canActivate: [confirmLoginGuard]},
     ]
-  }
+  },
+  {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];

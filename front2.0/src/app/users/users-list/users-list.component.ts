@@ -40,8 +40,6 @@ export class UsersListComponent implements OnInit {
       users => {
         this.users = users;
         console.log(users)
-
-
       },
       err => {
         console.log(err);

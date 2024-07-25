@@ -15,8 +15,11 @@ import java.util.*;
 @RestController
 public class UserController {
 
+    @Autowired
     private final UserService userService;
+    @Autowired
     private final UserRepository userRepository;
+    @Autowired
     private final RolesRepository rolesRepository;
 
 
@@ -43,14 +46,8 @@ public class UserController {
         user.setLastName(newUser.getLastName());
         user.setEmail(newUser.getEmail());
         user.setPhoneNumber(newUser.getPhoneNumber());
+        user.setRoles(rolesRepository.findById(newUser.getRoles()).orElseThrow(() -> new RuntimeException("Role not found")));
 
-        Set<RolesEntity> roles = new HashSet<>();
-        newUser.getRoles().forEach((roleId) -> {
-            RolesEntity role = rolesRepository.findById(roleId).orElseThrow(() -> new RuntimeException("Role not found"));
-            roles.add(role);
-        });
-
-        user.setRoles(roles);
         user.setPassword(newUser.getPassword());
 
         UserEntity savedUser = userService.saveUser(user);
@@ -67,13 +64,8 @@ public class UserController {
         user.setLastName(userDto.getLastName());
         user.setPhoneNumber(userDto.getPhoneNumber());
 
-        Set<RolesEntity> roles = new HashSet<>();
-        userDto.getRoles().forEach((roleId) -> {
-            RolesEntity role = rolesRepository.findById(roleId).orElseThrow(() -> new RuntimeException("Role not found"));
-            roles.add(role);
-        });
-        user.setRoles(roles);
-
+        user.setRoles(rolesRepository.findById(userDto.getRoles())
+                .orElseThrow(() -> new RuntimeException("Role not found")));
 
         UserEntity updatedUser = userService.saveUser(user);
         return ResponseEntity.ok(updatedUser);

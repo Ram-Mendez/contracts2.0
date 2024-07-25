@@ -9,6 +9,8 @@ import {Confirmation, MessageService} from "primeng/api";
 import {ContratosService} from "../../contratos/service/contratos.service";
 import {AuthoritiesService} from "../../authorities/authorities.service";
 import {UsersService} from "../../users/service/users.service";
+import {RolesService} from "../../roles/service/roles.service";
+import {Roles} from "../../users/service/roles";
 
 @Component({
   selector: 'app-administrators-add',
@@ -27,24 +29,30 @@ export class AdministratorsAddComponent implements OnInit {
   contratos: any;
   authorities: any;
   users: any;
-
+  roles: any;
 
   constructor(private administratorService: AdministratorService, private router: Router,
               private messageService: MessageService, private fb: FormBuilder,
               private contratosService: ContratosService, private authoritiesService: AuthoritiesService,
-              private userService: UsersService) {
+              private userService: UsersService,
+              private rolesService: RolesService
+  ) {
   }
 
   ngOnInit() {
     this.getContratos();
     this.getAuthorities();
     this.getUsers();
+    this.getRoles();
   }
 
+
   administratorForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    user: ['', Validators.required],
     contrato: ['', Validators.required],
     authority: ['', Validators.required],
-    user: ['', Validators.required]
+    roles: [[], Validators.required]
   })
 
 
@@ -66,21 +74,26 @@ export class AdministratorsAddComponent implements OnInit {
   getContratos() {
     this.contratosService.getContratos().subscribe((contratos: any) => {
       this.contratos = contratos;
-      console.log(this.contratos)
     });
   }
 
   getAuthorities() {
     this.authoritiesService.getAuthorities().subscribe((authorities: any) => {
       this.authorities = authorities;
-      console.log(this.authorities)
     });
   }
 
   getUsers() {
     this.userService.getUsers().subscribe((users: any) => {
       this.users = users;
-      console.log(this.users)
     });
   }
+
+  getRoles() {
+    this.rolesService.getRoles().subscribe(
+      roles => {
+        this.roles = roles
+      });
+  }
+
 }
