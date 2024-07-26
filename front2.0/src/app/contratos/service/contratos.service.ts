@@ -36,12 +36,12 @@ export class ContratosService {
 
 
   // start of other operations
-  setSelectedContratoId(id: number) {
+  setContratoId(id: number) {
     this.selectedContratoid.next(id);
   }
 
-  getSelectedContratoId(): Observable<number> {
-    return this.selectedContratoid.asObservable();
+  getContratoId(): Observable<number> {
+    return this.selectedContratoid;
   }
 
 }

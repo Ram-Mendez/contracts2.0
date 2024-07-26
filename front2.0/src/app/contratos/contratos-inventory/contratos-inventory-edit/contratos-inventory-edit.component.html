@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="sidebar">
+    <p-tree
+      selectionMode="single"
+      class="w-full md:w-45rem"
+      [value]="data">
+      <ng-template let-node pTemplate="default">
+        <div [routerLink]="node?.data?.path ? node.data.path : null">
+          <span class="p-treenode-label ellipsis">{{ node['label'] }}</span>
+        </div>
+      </ng-template>
+    </p-tree>
+  </div>
+  <div class="grid">
+    <div class="col-12">
+      <div class="card">
+        <h2>Edit Item</h2>
+        <form [formGroup]="editInventoryForm" (ngSubmit)="updateItem()">
+          <div class="p-fluid grid formgrid">
+            <div class="field col-12">
+              <label for="itemName">Item Name</label>
+              <input id="itemName" type="text" pInputText formControlName="itemName">
+            </div>
+            <div class="field col-12">
+              <label for="quantity">Quantity</label>
+              <input id="quantity" type="text" pInputText formControlName="quantity">
+            </div>
+            <div class="field col-12">
+              <label for="unitPrice">Unit Price(€)</label>
+              <input id="unitPrice" type="text" pInputText formControlName="unitPrice">
+            </div>
+            <div class="field col-12">
+              <p-button label="Save Changes" icon="pi pi-save" type="submit"></p-button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

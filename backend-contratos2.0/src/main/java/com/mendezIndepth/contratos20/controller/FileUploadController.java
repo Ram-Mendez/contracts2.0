@@ -22,7 +22,7 @@ public class FileUploadController {
     @Autowired
     private ContractRepository contratosRepository;
 
-    @PostMapping("/contracts/{id}/files/upload")
+    @PostMapping("/contracts-inventory/{id}/files/upload")
     public ResponseEntity<FileUploadEntity> storeFile(@PathVariable Integer id, @RequestParam("file") MultipartFile file) throws IOException {
         ContratosEntity contrato = contratosRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Contract not found: " + id));
@@ -31,17 +31,18 @@ public class FileUploadController {
         fileToUpload.setFileName(file.getOriginalFilename());
         fileToUpload.setType(file.getContentType());
         fileToUpload.setContrato(contrato);
+        byte[] fileBytes = file.getBytes();
+        String base64File = Base64.getEncoder().encodeToString(fileBytes);
+        fileToUpload.setFile(base64File);
 
-        byte[] fileBytes = file.getBytes(); // Obtiene los bytes del archivo
-        String base64File = Base64.getEncoder().encodeToString(fileBytes); // Convierte a Base64
-        fileToUpload.setFile(base64File); // Almacena como String
+        fileUploadRepository.save(fileToUpload);
 
         fileUploadRepository.save(fileToUpload);
 
         return ResponseEntity.ok(fileToUpload);
     }
 
-    @GetMapping("/contracts/{id}/files")
+    @GetMapping("/contracts-inventory/{id}/files")
     public List<FileUploadEntity> getFilesByContractId(@PathVariable("id") Integer id) {
         if (contratosRepository.existsById(id)) {
             return fileUploadRepository.findAll();
@@ -50,7 +51,7 @@ public class FileUploadController {
         }
     }
 
-    @DeleteMapping("/contracts/{id}/files/{fileId}")
+    @DeleteMapping("/contracts-inventory/{id}/files/{fileId}")
     public ResponseEntity<Void> deleteFile(@PathVariable Integer id, @PathVariable Integer fileId) {
         ContratosEntity contrato = contratosRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Contract not found: " + id));
@@ -66,7 +67,7 @@ public class FileUploadController {
         }
     }
 
-    @GetMapping("/contracts/{id}/files/{fileId}/download")
+    @GetMapping("/contracts-inventory/{id}/files/{fileId}/download")
     public ResponseEntity<byte[]> downloadFile(@PathVariable Integer id, @PathVariable Integer fileId) {
         ContratosEntity contrato = contratosRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Contract not found: " + id));

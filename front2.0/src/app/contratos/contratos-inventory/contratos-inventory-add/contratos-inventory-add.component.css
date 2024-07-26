@@ -29,6 +29,8 @@ html, body {
   background-color: transparent;
   padding: 0;
   margin: 0;
+  border: none;
+
 }
 
 .content {
@@ -38,20 +40,21 @@ html, body {
   margin: 0;
 }
 
-.card {
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
 
 h2 {
   text-align: center;
   margin-bottom: 1rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 600px; /* Se mantiene el ancho máximo como está */
+  margin: auto; /* Centra el formulario horizontalmente */
+  padding: 1rem; /* Espaciado interno del formulario */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para el efecto de tarjeta */
+  background-color: #fff; /* Color de fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
 .grid {
@@ -69,6 +72,21 @@ h2 {
 .p-calendar, .p-dropdown, .p-button {
   width: 100%;
 }
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones se ajusten y envuelvan en la línea siguiente si no hay espacio suficiente */
+  gap: 10px; /* Espacio entre botones */
+}
+
+/* Media query para pantallas de hasta 600px de ancho */
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column; /* Cambia la disposición de los botones a vertical */
+    align-items: center; /* Centra los botones verticalmente */
+  }
+}
+
 
 @media (max-width: 768px) {
   .container {

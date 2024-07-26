@@ -34,6 +34,7 @@ export class ContratosEditComponent implements OnInit {
   authorities: any[] = [];
   contractors: any[] = [];
 
+  data: TreeNode[] = [];
 
   constructor(private contratoService: ContratosService,
               private router: Router,
@@ -54,6 +55,8 @@ export class ContratosEditComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.contratoId = params['id'];
+
+      this.initializeTreeNode();
     });
     this.getAuthorities();
     this.getContractors();
@@ -64,8 +67,26 @@ export class ContratosEditComponent implements OnInit {
     );
   }
 
-
-
+  initializeTreeNode() {
+    this.data = [
+      {
+        label: 'Inventory',
+        selectable: true,
+        expanded: false,
+        expandedIcon: 'pi pi-folder-open',
+        collapsedIcon: 'pi pi-folder',
+        data: {path: `/home/edit-contract/${this.contratoId}/inventory`},
+      },
+      {
+        label: 'Files',
+        selectable: true,
+        expanded: false,
+        expandedIcon: 'pi pi-folder-open',
+        collapsedIcon: 'pi pi-folder',
+        data: {path: `/home/edit-contract/${this.contratoId}/files`},
+      },
+    ];
+  }
 
   updateContract() {
     if (this.editContractForm.valid) {
@@ -102,6 +123,4 @@ export class ContratosEditComponent implements OnInit {
         this.contractors = res;
       });
   }
-
-
 }

@@ -50,7 +50,7 @@ export class ContratosAddComponent implements OnInit {
   createContrato() {
     if (this.createContratoForm.valid) {
       this.contratoService.createContrato(this.createContratoForm.value).subscribe(
-        res => {
+        contrato => {
           this.messageService.add({
             severity: 'success', detail: 'Creating Contract',
             icon: 'pi pi-check'

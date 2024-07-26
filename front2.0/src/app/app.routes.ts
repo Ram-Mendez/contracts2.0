@@ -21,7 +21,18 @@ import {UsersEditComponent} from "./users/users-edit/users-edit.component";
 import {AdministratorsListComponent} from "./administrators/administrators-list/administrators-list.component";
 import {AdministratorsAddComponent} from "./administrators/administrators-add/administrators-add.component";
 import {AdministratorsEditComponent} from "./administrators/administrators-edit/administrators-edit.component";
-import {ContratosInventoryComponent} from "./contratos/contract-inventory/contratos-inventory.component";
+import {
+  ContratosInventoryListComponent
+} from "./contratos/contratos-inventory/contratos-inventory-list/contratos-inventory-list.component";
+import {
+  ContratosFilesListComponent
+} from "./contratos/contratos-files/contratos-files-list/contratos-files-list.component";
+import {
+  ContratosInventoryAddComponent
+} from "./contratos/contratos-inventory/contratos-inventory-add/contratos-inventory-add.component";
+import {
+  ContratosInventoryEditComponent
+} from "./contratos/contratos-inventory/contratos-inventory-edit/contratos-inventory-edit.component";
 
 
 export const routes: Routes = [
@@ -35,7 +46,22 @@ export const routes: Routes = [
       {path: '', component: ContratosListComponent, canActivate: [confirmLoginGuard]},
       {path: 'add-contract', component: ContratosAddComponent, canActivate: [confirmLoginGuard]},
       {path: 'edit-contract/:id', component: ContratosEditComponent, canActivate: [confirmLoginGuard]},
-      {path: 'inventory-contract/:id', component: ContratosInventoryComponent, canActivate: [confirmLoginGuard]},
+      {
+        path: 'edit-contract/:id/inventory',
+        component: ContratosInventoryListComponent,
+        canActivate: [confirmLoginGuard]
+      },
+      {
+        path: 'edit-contract/:id/inventory/add-item',
+        component: ContratosInventoryAddComponent,
+        canActivate: [confirmLoginGuard]
+      },
+      {
+        path: 'edit-contract/:contractId/inventory/:id/edit-item',
+        component: ContratosInventoryEditComponent,
+        canActivate: [confirmLoginGuard]
+      },
+      {path: 'edit-contract/:id/files', component: ContratosFilesListComponent, canActivate: [confirmLoginGuard]},
     ],
   },
   {
