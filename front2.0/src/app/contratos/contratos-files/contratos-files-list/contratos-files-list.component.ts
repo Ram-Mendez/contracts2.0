@@ -119,16 +119,16 @@ export class ContratosFilesListComponent implements OnInit {
   }
 
   downloadFile() {
-    this.isFileSelected = true;
-    const fileId = this.fileId;
-    const contratoId = this.contratoId;
-    this.contratosFileService.downloadFile(contratoId, fileId).subscribe(
-      response => {
-        console.log(response, "response")
-        const blob = new Blob([response], {type: 'application/octet-stream'});
-        const url = window.URL.createObjectURL(blob);
-        window.open(url);
-      });
-
+    this.contratosFileService.downloadFile(this.contratoId, this.fileId).subscribe(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'downloadedFile'; // Nombre estático del archivo
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    });
   }
+
 }
