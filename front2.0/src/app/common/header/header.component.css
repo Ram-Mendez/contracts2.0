@@ -1,0 +1,14 @@
+.user-info {
+  display: flex;
+  align-items: center; /* Alinea verticalmente en el centro */
+}
+
+.user-email {
+  margin-right: 1rem; /* Espacio entre el correo y el botón */
+  font-weight: bold;
+  color: black; /* Asegúrate de que el color sea visible */
+}
+
+p-button {
+  margin-right: 1rem
+}

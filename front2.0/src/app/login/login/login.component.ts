@@ -8,6 +8,7 @@ import {FloatLabelModule} from "primeng/floatlabel";
 import {Router, RouterLink} from "@angular/router";
 import {MessageService} from "primeng/api";
 import {LoginService} from "./service/login.service";
+import {CheckboxModule} from "primeng/checkbox";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ import {LoginService} from "./service/login.service";
     ButtonDirective,
     FloatLabelModule,
     RouterLink,
-    Button
+    Button,
+    CheckboxModule
   ],
   templateUrl: './login.component.html',
   providers: [],
@@ -28,6 +30,7 @@ import {LoginService} from "./service/login.service";
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  userEmail = '';
 
   constructor(private fb: FormBuilder, private messageService: MessageService,
               private router: Router, private loginService: LoginService) {
@@ -44,8 +47,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.loginService.login(this.loginForm.value).subscribe(
         userLogged => {
+          this.userEmail = userLogged.email;
           this.loginService.setEmailForUserLogged(userLogged.email)
-          console.log(userLogged);
           this.messageService.add({
             severity: 'success',
             detail: 'User logged in',
@@ -59,9 +62,6 @@ export class LoginComponent implements OnInit {
           console.log(err);
         }
       );
-
-
     }
-
   }
 }

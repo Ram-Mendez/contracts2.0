@@ -1,4 +1,11 @@
+<!-- header.component.html -->
 <div class="menubar-wrapper">
   <p-menubar [model]="items">
+    <ng-template pTemplate="end">
+      <div class="user-info">
+        <div class="user-email">{{ userEmail }}</div>
+        <p-button label="Logout" icon="pi pi-power-off" (click)="logout()"></p-button>
+      </div>
+    </ng-template>
   </p-menubar>
 </div>

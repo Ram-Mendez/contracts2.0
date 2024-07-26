@@ -9,6 +9,7 @@ import {Observable, tap} from "rxjs";
 export class LoginService {
   loginUrl = 'http://localhost:8080/login';
   getUserUrl = 'http://localhost:8080/users';
+  userEmail = '';
 
 
   constructor(private http: HttpClient) {
@@ -24,21 +25,16 @@ export class LoginService {
     );
   }
 
-  getUserByid(id: number): Observable<any> {
-    return this.http.get(this.getUserUrl + '/' + id);
-  }
-
   setEmailForUserLogged(email: string) {
     sessionStorage.setItem('email', email);
+    this.userEmail = email;
   }
 
   getEmailForUserLogged() {
-    return sessionStorage.getItem('email');
+    return sessionStorage.getItem('email') || this.userEmail;
   }
 
-  isLoggedIn()
-    :
-    boolean {
+  isLoggedIn(): boolean {
     return sessionStorage.getItem('user') !== null;
   }
 }
